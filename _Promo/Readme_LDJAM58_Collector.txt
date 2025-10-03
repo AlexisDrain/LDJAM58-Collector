@@ -1,0 +1,72 @@
+[Short Description]  
+Shoot, dash, and use dozens of guns!
+
+[Long Description]  
+Shoot, dash, and use dozens of guns!
+
+
+Full credits + Source code:  
+https://github.com/AlexisDrain/LDJAM58-Collector  
+
+
+Controls:  
+- WASD / Arrow keys:
+- Press P or Esc to pause.  
+- Press left mouse click or E to use/talk.  
+
+Notes:  
+- Performance is better on Chrome than Firefox.  
+- Performance is better with fullscreen disabled.  
+
+
+-----------------------
+
+Full credits + Source code + Cheats
+https://github.com/AlexisDrain/Arise1313
+
+
+=== Credits ===
+A game by Alexis Clay
+https://alexclay.itch.io/
+
+No generative AI was used in the creation of this game.
+
+=== Music (in order of appearance) ===
+- none yet
+
+
+=== SFX ===
+- UI buttons click SFX:
+Halfquake 1 by Muddasheep https://store.steampowered.com/app/644320/Halfquake_Trilogy/ - Attribution-NonCommercial 3.0 Unported  
+
+- UI buttons hover. Player injury sound.  
+BFXR https://www.bfxr.net/
+
+- Computer logs:
+Dialup.mp3 by Jlew -- https://freesound.org/s/16475/ -- License: Attribution 3.0
+
+- Keycard pickup (Cat meow):
+Sonniss 2020 - Game Audio Bundle\Soundholder - Cat - Meow Library\animals cat blue meow 14 mono 96kHz.wav
+Sonniss 2020 - Game Audio Bundle\Soundholder - Cat - Meow Library\animals cat Fiona 63 meow mono 96kHz.wav
+
+- Flamethrower:
+Sonniss 2018 - Game Audio Bundle\SoundMorph - STEAMPUNK WEAPONS\Steampunk Weapons - Firestorm Flamer - set_1.wav
+
+- Grenade Launcher:
+Sonnis 2017 - Game Audio Bundle\Fascinated Sound - Scene Shop Tool Box\Impact Nail Gun 01 Single Shot Compressed Air and Action.wav
+Granade Launcher.wav by GreenFireSound -- https://freesound.org/s/484109/ -- License: Attribution 3.0
+
+- Explosion:
+Sonniss 2018 - Game Audio Bundle\Gamemaster Audio - Guns, Bullets and Explosions\explosion_large_07.wav
+
+- Weapon pickup:
+loy's gun bullet case in.wav by martian -- https://freesound.org/s/182261/ -- License: Creative Commons 0
+
+- Guns:
+Sonniss 2017 - Game Audio Bundle\Gamemaster Audio -  Gun Sound Pack\gun_revolver_pistol_shot_04.wav
+Sonnis 2020 - Game Audio Bundle\Super Thump - Weapons of World War II - Designed\STDSGN_WoWW2_Wep_MG_M1919_Machinegun_Auto-Burst_Shot_X6.wav
+Sonnis 2020 - Game Audio Bundle\Super Thump - Weapons of World War II - Designed\STDSGN_WoWW2_Wep_Pistol_Luger_Shot_X5.wav
+
+- Teleport:
+Sonniss 2023 - Game Audio Bundle\RYK-Sounds - Retro Game SFX\teleporting-sound 5.wav
+Sonniss 2023 - Game Audio Bundle\RYK-Sounds - Retro Game SFX\passive gain life-sound.wav
