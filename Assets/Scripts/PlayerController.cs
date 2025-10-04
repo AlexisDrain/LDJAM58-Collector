@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
     public float drag = 0.98f;
     public float maxVelocity = 100f;
     private Rigidbody myRigidbody;
+    public Animator myAnimator;
+
+    public bool _canMove = true;
+
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody>();
@@ -23,6 +27,13 @@ public class PlayerController : MonoBehaviour
         }
         if (y != 0) {
             myRigidbody.AddForce(y * Vector3.forward * moveForce);
+        }
+
+        print(myRigidbody.velocity);
+        if (myRigidbody.velocity.magnitude > 1f) {
+            myAnimator.SetBool("isMoving", true);
+        } else {
+            myAnimator.SetBool("isMoving", false);
         }
         myRigidbody.velocity = myRigidbody.velocity * drag;
         myRigidbody.velocity = Vector3.ClampMagnitude(myRigidbody.velocity, maxVelocity);
