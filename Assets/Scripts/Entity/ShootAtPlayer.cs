@@ -38,7 +38,7 @@ public class ShootAtPlayer : MonoBehaviour {
 
         for (int i = 0; i < 5; i++) {
             yield return new WaitForSeconds(0.2f);
-            GameObject obj = GameManager.pool_flamethrowerBullets.Spawn(transform.position);
+            GameObject obj = GameManager.pool_bulletsRevolver.Spawn(transform.position);
             obj.GetComponent<Rigidbody>().position = transform.position;
             obj.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
             Vector3 direction = (GameManager.playerTrans.position - transform.position).normalized; // recalculate the direction after ant movement

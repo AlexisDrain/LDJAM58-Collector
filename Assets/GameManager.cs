@@ -11,13 +11,16 @@ public class GameManager : MonoBehaviour
     public static Transform playerTrans;
 
     private static Pool pool_LoudAudioSource;
-    public static Pool pool_flamethrowerBullets;
+    public static Pool pool_bulletsRevolver;
 
     public static UnityEvent playerReviveEvent = new UnityEvent();
 
     void Awake()
     {
         playerTrans = GameObject.Find("Player").transform;
+
+        pool_LoudAudioSource = transform.Find("pool_LoudAudioSource").GetComponent<Pool>();
+        pool_bulletsRevolver = transform.Find("pool_BulletsRevolver").GetComponent<Pool>();
 
         //Cursor.lockState = CursorLockMode.None;
         Cursor.visible = false;

@@ -55,7 +55,7 @@ public class FlamethrowerController : MonoBehaviour
         List<float> angles = new List<float> { -30f, -15f, 0f, 15f, 30f };
 
         for(int i = 0; i < angles.Count; i++) {
-            GameObject obj = GameManager.pool_flamethrowerBullets.Spawn(transform.position);
+            GameObject obj = GameManager.pool_bulletsRevolver.Spawn(transform.position);
             obj.GetComponent<Rigidbody>().position = transform.position;
             obj.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
             Vector3 rotatedDirection = Quaternion.Euler(0f, angles[i], 0f) * direction;
