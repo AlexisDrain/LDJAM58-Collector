@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EntityLookAt : MonoBehaviour {
 
+    public bool faceCamera = true;
     public bool targetIsMouse = false;
     public bool targetIsPlayer = true;
     public bool flipYWhenOnLeftSide = true;
@@ -32,10 +33,17 @@ public class EntityLookAt : MonoBehaviour {
         direction.Normalize();
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.eulerAngles = new Vector3(0f, 0f, angle);
+
+        if(faceCamera) {
+            transform.eulerAngles = new Vector3(60f, 0f, angle);
+
+        } else {
+            // won't need this probably.
+            transform.eulerAngles = new Vector3(0f, 0f, angle);
+        }
         // GetComponent<PixelRotate>().SetRotate(angle);
 
-        if(flipYWhenOnLeftSide == false) {
+        if (flipYWhenOnLeftSide == false) {
             return;
         }
 
