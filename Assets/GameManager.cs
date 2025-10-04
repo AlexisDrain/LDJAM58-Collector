@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static bool playerIsDead = false;
 
     public static Transform playerTrans;
+    public static Rigidbody playerRigidbody;
 
     private static Pool pool_LoudAudioSource;
     public static Pool pool_bulletsRevolver;
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         playerTrans = GameObject.Find("Player").transform;
+        playerRigidbody = playerTrans.GetComponent<Rigidbody>();
 
         pool_LoudAudioSource = transform.Find("pool_LoudAudioSource").GetComponent<Pool>();
         pool_bulletsRevolver = transform.Find("pool_BulletsRevolver").GetComponent<Pool>();
@@ -31,7 +33,6 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        
         Cursor.visible = false;
         if (Input.GetMouseButtonDown(0) && Cursor.visible) {
             Cursor.visible = false;

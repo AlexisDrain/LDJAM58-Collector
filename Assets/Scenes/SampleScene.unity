@@ -6365,8 +6365,8 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -6395,7 +6395,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 117
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -6529,8 +6529,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1450134009}
   - {fileID: 1766887654}
+  - {fileID: 1450134009}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7375,7 +7375,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1450134010
 MonoBehaviour:
@@ -7724,6 +7724,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &1702469092 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8542214589700752884, guid: 9fccfe44400399540b4c4d725bcb325a, type: 3}
+  m_PrefabInstance: {fileID: 795879442}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1711561778
 GameObject:
   m_ObjectHideFlags: 0
@@ -8087,7 +8092,7 @@ GameObject:
   - component: {fileID: 1862089614}
   - component: {fileID: 1862089613}
   - component: {fileID: 1862089612}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8529,6 +8534,7 @@ GameObject:
   - component: {fileID: 2074607251}
   - component: {fileID: 2074607250}
   - component: {fileID: 2074607252}
+  - component: {fileID: 2074607253}
   m_Layer: 6
   m_Name: Weapon_Revolver
   m_TagString: Untagged
@@ -8680,11 +8686,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myWeapon: 0
+  unicornHornTrans: {fileID: 1702469092}
+  playerPushForce: 1
   shootClips:
   - {fileID: 8300000, guid: 111c79ee6e053b54388d9544c3cca148, type: 3}
+  gunOffset: 0.1
   playerPushbackForce: 300
   nextShotCountdownDefault: 0
   _mousePosition: {x: 0, y: 0, z: 0}
+--- !u!114 &2074607253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074607248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e435e0fe355ee0c42a73f3da703ff437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2125627482
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,8 +11,11 @@ public class PlayerShoot2D : MonoBehaviour {
     // public LineRenderer shootCrosshairLine;
 
     // public Transform shootCrosshairTransform;
+    public Transform unicornHornTrans;
+    public float playerPushForce = 1f;
     public List<AudioClip> shootClips;
 
+    public float gunOffset = 0.1f;
     public float playerPushbackForce = 300f;
     public float nextShotCountdownDefault;
     private float nextShotCountdown;
@@ -23,7 +26,9 @@ public class PlayerShoot2D : MonoBehaviour {
     void Start() {
 
     }
+    public void NewWeapon() {
 
+    }
     private void FixedUpdate() {
         if (nextShotCountdown > 0.0f) {
             nextShotCountdown -= Time.deltaTime;
@@ -32,6 +37,12 @@ public class PlayerShoot2D : MonoBehaviour {
         if (Input.GetButton("Shoot") && nextShotCountdown <= 0f) {
 
             nextShotCountdown = nextShotCountdownDefault;
+
+            Vector3 direction = (_mousePosition - unicornHornTrans.position).normalized;
+
+            if (Input.GetButton("Shoot")) {
+                GameManager.playerRigidbody.AddForce(-direction * playerPushForce, ForceMode.Force);
+            }
 
             int randomSFX = Random.Range(0, shootClips.Count);
             GameManager.SpawnLoudAudio(shootClips[randomSFX]);

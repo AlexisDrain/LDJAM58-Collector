@@ -24,7 +24,7 @@ public class PlayerWeaponsController : MonoBehaviour
         playerRigidbody = GameManager.playerTrans.GetComponent<Rigidbody>();
     }
 
-
+    /*
     private void Update() {
         if (GameManager.playerIsDead == true // || GameManager.menus.activeSelf
             // || GameManager.endGame == true
@@ -39,6 +39,8 @@ public class PlayerWeaponsController : MonoBehaviour
             _isFiring = false;
         }
     }
+    */
+    /*
     void SpawnBullets() {
         Vector3 mousePosition = GameManager.GetMousePositionOnFloor(); // + new Vector3(0f, 1f, 0f);
         Vector3 direction = (mousePosition - unicornHornTrans.position).normalized;
@@ -52,6 +54,7 @@ public class PlayerWeaponsController : MonoBehaviour
             obj.GetComponent<BulletController>().SetDirection(rotatedDirection);
         }
     }
+    */
     // Update is called once per frame
     void FixedUpdate() {
         Vector3 mousePosition = GameManager.GetMousePositionOnFloor(); // + new Vector3(0f, 1f, 0f);
@@ -67,10 +70,7 @@ public class PlayerWeaponsController : MonoBehaviour
             return;
         }
 
-        if(Input.GetButton("Shoot")) {
-            playerRigidbody.AddForce(-direction * playerPushForce, ForceMode.Force);
-        }
-
+        /*
         if (currentShootCountdown > 0f) {
             currentShootCountdown -= Time.deltaTime;
         } else if (currentShootCountdown <= 0f && Input.GetButton("Shoot")) {
@@ -78,7 +78,7 @@ public class PlayerWeaponsController : MonoBehaviour
 
             SpawnBullets();
         }
-
+        */
 
         // crosshairTransform.position = mousePosition + new Vector3(0f, 0.1f, 0f);
 
