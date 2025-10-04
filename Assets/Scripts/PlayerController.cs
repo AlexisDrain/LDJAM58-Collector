@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float moveForce;
     public float drag = 0.98f;
     public float maxVelocity = 100f;
+    public Transform graphicalObject;
     private Rigidbody myRigidbody;
     public Animator myAnimator;
 
@@ -25,7 +26,6 @@ public class PlayerController : MonoBehaviour
         if (directionRight == true && myRigidbody.velocity.x < -1f) {
             directionRight = false;
             targetScaleX = -1f;
-            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
         if (directionRight == false && myRigidbody.velocity.x > 1f) {
             directionRight = true;
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         }
 
         currentScaleX = Mathf.Lerp(currentScaleX, targetScaleX, 8f * Time.deltaTime);
-        transform.localScale = new Vector3(currentScaleX, 1f, 1f);
+        graphicalObject.localScale = new Vector3(currentScaleX, 1f, 1f);
     }
     void FixedUpdate()
     {
@@ -51,8 +51,6 @@ public class PlayerController : MonoBehaviour
         } else {
             myAnimator.SetBool("isMoving", false);
         }
-
-        
 
         myRigidbody.velocity = myRigidbody.velocity * drag;
         myRigidbody.velocity = Vector3.ClampMagnitude(myRigidbody.velocity, maxVelocity);
