@@ -42,6 +42,8 @@ public class EntityHealth : MonoBehaviour {
                 GetComponent<AudioSource>().clip = clipHurt[Random.Range(0, clipHurt.Count)];
                 GetComponent<AudioSource>().PlayWebGL();
             }
+            GameManager.Particles_BloodDamage.transform.position = transform.position;
+            GameManager.Particles_BloodDamage.Play();
         }
         if(_currentHealth <= 0) {
             if(gameObject.CompareTag("Player")) {
@@ -63,7 +65,10 @@ public class EntityHealth : MonoBehaviour {
             // hack: deadbody inherets sprite direction from this object
             deadbody.transform.Find("Sprite").GetComponent<SpriteRenderer>().flipX = GetComponent<SmallAntController>().mySpriteRenderer.flipX;
             */
-            gameObject.SetActive(false);
+            GameManager.particles_BloodKill.transform.position = transform.position;
+            GameManager.particles_BloodKill.Play();
+            Destroy(gameObject);
+            //gameObject.SetActive(false);
         }
     }
     /*
