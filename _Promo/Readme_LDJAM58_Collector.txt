@@ -39,7 +39,7 @@ No generative AI was used in the creation of this game.
 - UI buttons click SFX:
 Halfquake 1 by Muddasheep https://store.steampowered.com/app/644320/Halfquake_Trilogy/ - Attribution-NonCommercial 3.0 Unported  
 
-- UI buttons hover. Player injury sound.  
+- UI buttons hover. Player injury sound. Explosions. Crunchy sound effects:  
 BFXR https://www.bfxr.net/
 
 - Computer logs:

@@ -5,21 +5,29 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-
+    public static bool playerInMenu = true;
     public static bool playerIsDead = false;
 
     public static Transform playerTrans;
     public static Rigidbody playerRigidbody;
+    public static GameObject mainMenu;
+    public static GameObject creditsMenu;
 
     private static Pool pool_LoudAudioSource;
     public static Pool pool_bulletsRevolver;
 
     public static UnityEvent playerReviveEvent = new UnityEvent();
 
-    void Awake()
-    {
+    void Awake() {
+        Time.timeScale = 0f;
+        playerInMenu = true;
+        playerIsDead = false;
+
         playerTrans = GameObject.Find("Player").transform;
         playerRigidbody = playerTrans.GetComponent<Rigidbody>();
+        mainMenu = GameObject.Find("MainMenu").gameObject;
+        creditsMenu = GameObject.Find("CreditsMenu").gameObject;
+        creditsMenu.SetActive(false);
 
         pool_LoudAudioSource = transform.Find("pool_LoudAudioSource").GetComponent<Pool>();
         pool_bulletsRevolver = transform.Find("pool_BulletsRevolver").GetComponent<Pool>();
@@ -31,11 +39,33 @@ public class GameManager : MonoBehaviour
     public static void KillPlayer() {
         playerIsDead = true;
     }
+    public void StartGame() {
+        Time.timeScale = 1f;
+        playerInMenu = false;
+        mainMenu.SetActive(false);
+        creditsMenu.SetActive(false);
+    }
+    public void ResumeGame() {
+        Time.timeScale = 1f;
+        playerInMenu = false;
+        mainMenu.SetActive(false);
+        creditsMenu.SetActive(false);
+    }
+    public void PauseGame() {
+        Time.timeScale = 0f;
+        playerInMenu = true;
+        mainMenu.SetActive(true);
+        creditsMenu.SetActive(false);
+    }
     void Update()
     {
         Cursor.visible = false;
         if (Input.GetMouseButtonDown(0) && Cursor.visible) {
             Cursor.visible = false;
+        }
+
+        if(Input.GetButtonDown("Pause")) {
+            PauseGame();
         }
     }
 

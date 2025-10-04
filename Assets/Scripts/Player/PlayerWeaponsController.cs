@@ -57,35 +57,14 @@ public class PlayerWeaponsController : MonoBehaviour
     */
     // Update is called once per frame
     void FixedUpdate() {
-        Vector3 mousePosition = GameManager.GetMousePositionOnFloor(); // + new Vector3(0f, 1f, 0f);
-        Vector3 direction = (mousePosition - unicornHornTrans.position).normalized;
+        Vector3 mousePosition = GameManager.GetMousePositionOnFloor();
 
-
-        if (GameManager.playerIsDead == true
-            //|| GameManager.menus.activeSelf
-            //|| GameManager.endGame == true
-            || playerController._canMove == false) {
-            lineRenderer.SetPosition(0, unicornHornTrans.position);
-            lineRenderer.SetPosition(1, transform.position);
+        if (GameManager.playerInMenu == true || GameManager.playerIsDead == true) {
             return;
         }
-
-        /*
-        if (currentShootCountdown > 0f) {
-            currentShootCountdown -= Time.deltaTime;
-        } else if (currentShootCountdown <= 0f && Input.GetButton("Shoot")) {
-            currentShootCountdown = defaultShootCountdown;
-
-            SpawnBullets();
-        }
-        */
-
-        // crosshairTransform.position = mousePosition + new Vector3(0f, 0.1f, 0f);
 
         // line to crosshair
         lineRenderer.SetPosition(0, unicornHornTrans.position);
         lineRenderer.SetPosition(1, mousePosition);
-
-
     }
 }

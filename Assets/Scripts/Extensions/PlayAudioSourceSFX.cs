@@ -15,10 +15,14 @@ public class PlayAudioSourceSFX: MonoBehaviour {
 	public void PlayLoudSFXInGameManager(AudioClip newAudioClip) {
 
 		GameManager.SpawnLoudAudio(newAudioClip, new Vector2(), overrideAudioSourceVolume);
-	}
+    }
+    public void PlayVariablePitchSFXInGameManager(AudioClip newAudioClip) {
+
+        GameManager.SpawnLoudAudio(newAudioClip, new Vector2(0.8f, 1.2f), overrideAudioSourceVolume);
+    }
 
 
-	/*
+    /*
 	private void Update () {
 		
 	}

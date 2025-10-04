@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update() {
 
+        if (GameManager.playerInMenu == true || GameManager.playerIsDead == true) {
+            return;
+        }
+
         if (directionRight == true && myRigidbody.velocity.x < -1f) {
             directionRight = false;
             targetScaleX = -1f;
@@ -35,8 +39,13 @@ public class PlayerController : MonoBehaviour
         currentScaleX = Mathf.Lerp(currentScaleX, targetScaleX, 8f * Time.deltaTime);
         graphicalObject.localScale = new Vector3(currentScaleX, 1f, 1f);
     }
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
+
+        if (GameManager.playerInMenu == true || GameManager.playerIsDead == true) {
+            myRigidbody.velocity = Vector3.zero;
+            return;
+        }
+
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
         if (x != 0) {

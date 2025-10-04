@@ -33,6 +33,12 @@ public class PlayerShoot2D : MonoBehaviour {
         if (nextShotCountdown > 0.0f) {
             nextShotCountdown -= Time.deltaTime;
         }
+
+
+        if (GameManager.playerInMenu == true || GameManager.playerIsDead == true) {
+            return;
+        }
+
         _mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Vector3.Distance(transform.position, Camera.main.transform.position)));
         if (Input.GetButton("Shoot") && nextShotCountdown <= 0f) {
 

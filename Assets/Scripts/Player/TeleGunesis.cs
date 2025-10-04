@@ -14,6 +14,11 @@ public class TeleGunesis : MonoBehaviour
     private Vector3 endPos;
     void FixedUpdate()
     {
+
+        if (GameManager.playerInMenu == true || GameManager.playerIsDead == true) {
+            return;
+        }
+
         startPos = GameManager.playerTrans.position;
 
         endPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Vector3.Distance(transform.position, Camera.main.transform.position)));
