@@ -41,7 +41,7 @@ public class PlayerShoot2D : MonoBehaviour {
             GameObject bullet = GameManager.pool_bulletsRevolver.Spawn(transform.position);
             // bullet.GetComponent<EntityMove>().SetDirection(_mousePosition - transform.position, GameManager.playerTransform.GetComponent<Collider>());
         } else if (myWeapon == Weapon.missilelauncher) {
-            GameObject missile = GameManager.pool_bulletsRevolver.Spawn(transform.position);
+            GameObject missile = GameManager.pool_bulletsMissiles.Spawn(transform.position);
             missile.GetComponent<EntityMove>().SetDirection(direction, GameManager.playerTrans.GetComponent<Collider>());
         } else if (myWeapon == Weapon.pistol) {
             GameObject bullet = GameManager.pool_bulletsRevolver.Spawn(transform.position);

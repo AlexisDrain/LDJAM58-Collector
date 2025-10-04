@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a2ee491a0b6af874c924d03531f7582c
+guid: 8b648e57eafee474d8614c67bbd720f6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 64
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -110,118 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: weapons_0
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 117
-        width: 12
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 763f6382377427f47b2d127f712ed1d3
-      internalID: -627244668
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: weapons_1
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 108
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9259336086417d2409bc9ef5e91685b8
-      internalID: 2941739
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: weapons_2
+      name: spawnerAmmo_0
       rect:
         serializedVersion: 2
         x: 3
-        y: 99
-        width: 14
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 24b87f144747e3e4095180fedb1bcc4b
-      internalID: -1275153997
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: weapons_3
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 89
+        y: 47
         width: 15
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b2b255b077cfd0a41a0841e497fdcff7
-      internalID: 1203653244
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: weapons_4
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 73
-        width: 13
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 63b1a0c2f9dc762418578f837c5e1851
-      internalID: -469523333
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: weapons_5
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 54
-        width: 15
-        height: 10
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c62442fcb5e592541b3f08e64b4fb2d1
-      internalID: -1741590026
+      spriteID: 9d3483d1092706b4a8f5ed75ce11579d
+      internalID: -1222336973
       vertices: []
       indices: 
       edges: []
@@ -238,7 +133,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 9c19ef2dcdedd994fa7d6157d3394d3b
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -246,12 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      weapons_0: -627244668
-      weapons_1: 2941739
-      weapons_2: -1275153997
-      weapons_3: 1203653244
-      weapons_4: -469523333
-      weapons_5: -1741590026
+      spawnerAmmo_0: -1222336973
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

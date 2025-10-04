@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class TriggerHurtEntity : MonoBehaviour
 {
     // public UnityEvent onTouchEvent;
+    public bool destroyOnTouchAnything = true;
     public int damageValue = 1;
     void Start()
     {
@@ -17,10 +18,16 @@ public class TriggerHurtEntity : MonoBehaviour
             col.collider.gameObject.GetComponent<EntityHealth>().AddDamage(damageValue);
             gameObject.SetActive(false);
         }
+        if(destroyOnTouchAnything == true) {
+            gameObject.SetActive(false);
+        }
     }
     void OnTriggerEnter(Collider col) {
         if (col.gameObject.GetComponent<EntityHealth>()) {
             col.gameObject.GetComponent<EntityHealth>().AddDamage(damageValue);
+            gameObject.SetActive(false);
+        }
+        if (destroyOnTouchAnything == true) {
             gameObject.SetActive(false);
         }
     }

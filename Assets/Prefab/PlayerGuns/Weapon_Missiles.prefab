@@ -53,12 +53,14 @@ MonoBehaviour:
   currentAmmo: 0
   unicornHornTrans: {fileID: 0}
   shootClips:
-  - {fileID: 8300000, guid: 111c79ee6e053b54388d9544c3cca148, type: 3}
+  - {fileID: 8300000, guid: 3158ca604151525448441ed7d6f1ffb1, type: 3}
   gunPositionOffset: 0.1
   gunShootDelayOffset: 0
   playerPushbackForce: 300
   nextShotCountdownDefault: 0.5
   _mousePosition: {x: 0, y: 0, z: 0}
+  weaponUI: {fileID: 0}
+  weaponUIAmmoCount: {fileID: 0}
 --- !u!82 &6455903389685885720
 AudioSource:
   m_ObjectHideFlags: 0
@@ -167,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e435e0fe355ee0c42a73f3da703ff437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  telegunPosOffset: {x: 0, y: 0}
 --- !u!114 &4916501262335125293
 MonoBehaviour:
   m_ObjectHideFlags: 0
