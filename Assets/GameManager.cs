@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static Rigidbody playerRigidbody;
     public static GameObject mainMenu;
     public static GameObject creditsMenu;
+    public static Transform weaponMenu;
 
     private static Pool pool_LoudAudioSource;
     public static Pool pool_bulletsRevolver;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
         mainMenu = GameObject.Find("MainMenu").gameObject;
         creditsMenu = GameObject.Find("CreditsMenu").gameObject;
         creditsMenu.SetActive(false);
+        weaponMenu = GameObject.Find("Canvas/WeaponMenu").transform;
 
         pool_LoudAudioSource = transform.Find("pool_LoudAudioSource").GetComponent<Pool>();
         pool_bulletsRevolver = transform.Find("pool_BulletsRevolver").GetComponent<Pool>();

@@ -27,11 +27,14 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (directionRight == true && myRigidbody.velocity.x < -1f) {
+        float x = Input.GetAxisRaw("Horizontal");
+
+        //if (directionRight == true && myRigidbody.velocity.x < -1f) { because of weapon pushback, shooting a gun would turn the player around
+        if (directionRight == true && x < -0.5f) {
             directionRight = false;
             targetScaleX = -1f;
         }
-        if (directionRight == false && myRigidbody.velocity.x > 1f) {
+        if (directionRight == false && x > 0.5f) {
             directionRight = true;
             targetScaleX = 1f;
         }

@@ -1,33 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public enum Weapon {
     machinegun,
     missilelauncher,
+    pistol,
 }
 public class PlayerShoot2D : MonoBehaviour {
     public Weapon myWeapon;
+    public int currentAmmo;
     // public LineRenderer shootCrosshairLine;
 
     // public Transform shootCrosshairTransform;
     public Transform unicornHornTrans;
-    public float playerPushForce = 1f;
     public List<AudioClip> shootClips;
 
-    public float gunOffset = 0.1f;
+    public float gunPositionOffset = 0.1f;
+    public float gunShootDelayOffset = 0f;
     public float playerPushbackForce = 300f;
     public float nextShotCountdownDefault;
     private float nextShotCountdown;
 
     [Header("read only")]
     public Vector3 _mousePosition;
+    public GameObject weaponUI;
+    public TextMeshProUGUI weaponUIAmmoCount;
 
     void Start() {
 
     }
-    public void NewWeapon() {
+    public IEnumerator ShootCountdown() {
+        yield return new WaitForSeconds(gunShootDelayOffset);
 
+
+        Vector3 direction = (_mousePosition - transform.position).normalized;
+
+        if (myWeapon == Weapon.machinegun) {
+            GameObject bullet = GameManager.pool_bulletsRevolver.Spawn(transform.position);
+            // bullet.GetComponent<EntityMove>().SetDirection(_mousePosition - transform.position, GameManager.playerTransform.GetComponent<Collider>());
+        } else if (myWeapon == Weapon.missilelauncher) {
+            GameObject missile = GameManager.pool_bulletsRevolver.Spawn(transform.position);
+            missile.GetComponent<EntityMove>().SetDirection(direction, GameManager.playerTrans.GetComponent<Collider>());
+        } else if (myWeapon == Weapon.pistol) {
+            GameObject bullet = GameManager.pool_bulletsRevolver.Spawn(transform.position);
+            bullet.GetComponent<EntityMove>().SetDirection(direction, GameManager.playerTrans.GetComponent<Collider>());
+        }
+
+        // sfx
+        int randomSFX = Random.Range(0, shootClips.Count);
+        GameManager.SpawnLoudAudio(shootClips[randomSFX]);
+
+        // player pushback
+        GameManager.playerTrans.GetComponent<Rigidbody>().AddForce(-1f * direction * playerPushbackForce, ForceMode.Force);
+
+        currentAmmo -= 1;
+        weaponUIAmmoCount.text = currentAmmo.ToString();
+        if (currentAmmo <= 0) {
+            Destroy(weaponUI);
+            Destroy(gameObject);
+        }
     }
     private void FixedUpdate() {
         if (nextShotCountdown > 0.0f) {
@@ -42,25 +75,9 @@ public class PlayerShoot2D : MonoBehaviour {
         _mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Vector3.Distance(transform.position, Camera.main.transform.position)));
         if (Input.GetButton("Shoot") && nextShotCountdown <= 0f) {
 
+
             nextShotCountdown = nextShotCountdownDefault;
-
-            Vector3 direction = (_mousePosition - unicornHornTrans.position).normalized;
-
-            if (Input.GetButton("Shoot")) {
-                GameManager.playerRigidbody.AddForce(-direction * playerPushForce, ForceMode.Force);
-            }
-
-            int randomSFX = Random.Range(0, shootClips.Count);
-            GameManager.SpawnLoudAudio(shootClips[randomSFX]);
-            if(myWeapon == Weapon.machinegun) {
-                GameObject bullet = GameManager.pool_bulletsRevolver.Spawn(transform.position);
-                // bullet.GetComponent<EntityMove>().SetDirection(_mousePosition - transform.position, GameManager.playerTransform.GetComponent<Collider>());
-            } else if (myWeapon == Weapon.missilelauncher) {
-                GameObject missile = GameManager.pool_bulletsRevolver.Spawn(transform.position);
-                // missile.GetComponent<EntityMove>().SetDirection(_mousePosition - transform.position, GameManager.playerTransform.GetComponent<Collider>());
-            }
-
-            GameManager.playerTrans.GetComponent<Rigidbody>().AddForce((transform.position - _mousePosition).normalized * playerPushbackForce, ForceMode.Force);
+            StartCoroutine("ShootCountdown");
         }
     }
     /*

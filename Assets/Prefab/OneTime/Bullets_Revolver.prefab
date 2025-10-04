@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7265532555216938588}
   - component: {fileID: 4425315980335280642}
   - component: {fileID: 5270827528621790067}
+  - component: {fileID: 3075962649120626461}
+  - component: {fileID: 4023684568793220991}
   m_Layer: 0
   m_Name: Bullets_Revolver
   m_TagString: Untagged
@@ -96,6 +98,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageValue: 20
+--- !u!114 &3075962649120626461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3760233896618717119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099e71c4ffa9ef44189b54c30bf2cec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  addForce: 100
+  maxSpeed: 30
+  lookTowardsVelocity: 0
+  spawner: {fileID: 0}
+  _direction: {x: 0, y: 0, z: 0}
+--- !u!114 &4023684568793220991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3760233896618717119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc2bb3faf16012442be012980f638bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notes: your notes
+  timeToWait: 3
+  onTimeEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3760233896618717119}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  waitForSecondsRealtime: 0
+  startOnEnable: 1
+  startOnStart: 0
+  restartTimerOnReset: 1
 --- !u!1 &8165034948184236916
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +275,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 5
+  m_Time: 0.5
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
