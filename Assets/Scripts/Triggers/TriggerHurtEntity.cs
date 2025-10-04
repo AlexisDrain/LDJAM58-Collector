@@ -3,8 +3,9 @@ using UnityEngine.Events;
 
 public class TriggerHurtEntity : MonoBehaviour
 {
-    // public UnityEvent onTouchEvent;
+    public UnityEvent onTouchEvent;
     public bool destroyOnTouchAnything = true;
+    public bool destroySelfOnInvoke = true;
     public int damageValue = 1;
     void Start()
     {
@@ -16,18 +17,26 @@ public class TriggerHurtEntity : MonoBehaviour
     {
         if(col.collider.gameObject.GetComponent<EntityHealth>()) {
             col.collider.gameObject.GetComponent<EntityHealth>().AddDamage(damageValue);
-            gameObject.SetActive(false);
+            onTouchEvent.Invoke();
+            if (destroySelfOnInvoke) {
+                gameObject.SetActive(false);
+            }
         }
         if(destroyOnTouchAnything == true) {
+            onTouchEvent.Invoke();
             gameObject.SetActive(false);
         }
     }
     void OnTriggerEnter(Collider col) {
         if (col.gameObject.GetComponent<EntityHealth>()) {
             col.gameObject.GetComponent<EntityHealth>().AddDamage(damageValue);
-            gameObject.SetActive(false);
+            onTouchEvent.Invoke();
+            if (destroySelfOnInvoke) {
+                gameObject.SetActive(false);
+            }
         }
         if (destroyOnTouchAnything == true) {
+            onTouchEvent.Invoke();
             gameObject.SetActive(false);
         }
     }
