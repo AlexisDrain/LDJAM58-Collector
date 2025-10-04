@@ -11,13 +11,30 @@ public class PlayerController : MonoBehaviour
     public Animator myAnimator;
 
     public bool _canMove = true;
+    private bool directionRight = true;
+    private float targetScaleX = 1f;
+    private float currentScaleX = 1f;
 
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
+    private void Update() {
+
+        if (directionRight == true && myRigidbody.velocity.x < -1f) {
+            directionRight = false;
+            targetScaleX = -1f;
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        if (directionRight == false && myRigidbody.velocity.x > 1f) {
+            directionRight = true;
+            targetScaleX = 1f;
+        }
+
+        currentScaleX = Mathf.Lerp(currentScaleX, targetScaleX, 8f * Time.deltaTime);
+        transform.localScale = new Vector3(currentScaleX, 1f, 1f);
+    }
     void FixedUpdate()
     {
         float x = Input.GetAxisRaw("Horizontal");
@@ -29,12 +46,14 @@ public class PlayerController : MonoBehaviour
             myRigidbody.AddForce(y * Vector3.forward * moveForce);
         }
 
-        print(myRigidbody.velocity);
         if (myRigidbody.velocity.magnitude > 1f) {
             myAnimator.SetBool("isMoving", true);
         } else {
             myAnimator.SetBool("isMoving", false);
         }
+
+        
+
         myRigidbody.velocity = myRigidbody.velocity * drag;
         myRigidbody.velocity = Vector3.ClampMagnitude(myRigidbody.velocity, maxVelocity);
     }
