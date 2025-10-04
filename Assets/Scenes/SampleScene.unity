@@ -5941,6 +5941,38 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4980573527323078788, guid: fd9614d95e2023243a954aef87d12c54, type: 3}
+      propertyPath: m_Text
+      value: "Full credits + Source code:  \r\nhttps://github.com/AlexisDrain/LDJAM58-Collector 
+        \r\n\r\n\r\n=== Credits ===\r\nA game by Alexis Clay\r\nhttps://alexclay.itch.io/\r\n\r\nNo
+        generative AI was used in the creation of this game.\r\n\r\n\r\n=== Music
+        (in order of appearance) ===\r\n- none yet\r\n\r\n\r\n=== SFX ===\r\n- UI
+        buttons click SFX:\r\nHalfquake 1 by Muddasheep https://store.steampowered.com/app/644320/Halfquake_Trilogy/
+        - Attribution-NonCommercial 3.0 Unported  \r\n\r\n- UI buttons hover. Player
+        injury sound. Explosions. Crunchy sound effects:  \r\nBFXR https://www.bfxr.net/\r\n\r\n-
+        Computer logs:\r\nDialup.mp3 by Jlew -- https://freesound.org/s/16475/ --
+        License: Attribution 3.0\r\n\r\n- Keycard pickup (Cat meow):\r\nSonniss 2020
+        - Game Audio Bundle\\Soundholder - Cat - Meow Library\\animals cat blue meow
+        14 mono 96kHz.wav\r\nSonniss 2020 - Game Audio Bundle\\Soundholder - Cat
+        - Meow Library\\animals cat Fiona 63 meow mono 96kHz.wav\r\n\r\n- Flamethrower:\r\nSonniss
+        2018 - Game Audio Bundle\\SoundMorph - STEAMPUNK WEAPONS\\Steampunk Weapons
+        - Firestorm Flamer - set_1.wav\r\n\r\n- Grenade Launcher:\r\nSonnis 2017
+        - Game Audio Bundle\\Fascinated Sound - Scene Shop Tool Box\\Impact Nail
+        Gun 01 Single Shot Compressed Air and Action.wav\r\nGranade Launcher.wav
+        by GreenFireSound -- https://freesound.org/s/484109/ -- License: Attribution
+        3.0\r\n\r\n- Explosion:\r\nSonniss 2018 - Game Audio Bundle\\Gamemaster Audio
+        - Guns, Bullets and Explosions\\explosion_large_07.wav\r\n\r\n- Weapon pickup:\r\nloy's
+        gun bullet case in.wav by martian -- https://freesound.org/s/182261/ -- License:
+        Creative Commons 0\r\n\r\n- Guns:\r\nSonniss 2017 - Game Audio Bundle\\Gamemaster
+        Audio -  Gun Sound Pack\\gun_revolver_pistol_shot_04.wav\r\nSonnis 2020 -
+        Game Audio Bundle\\Super Thump - Weapons of World War II - Designed\\STDSGN_WoWW2_Wep_MG_M1919_Machinegun_Auto-Burst_Shot_X6.wav\r\nSonnis
+        2020 - Game Audio Bundle\\Super Thump - Weapons of World War II - Designed\\STDSGN_WoWW2_Wep_Pistol_Luger_Shot_X5.wav\r\n\r\n-
+        Teleport:\r\nSonniss 2023 - Game Audio Bundle\\RYK-Sounds - Retro Game SFX\\teleporting-sound
+        5.wav\r\nSonniss 2023 - Game Audio Bundle\\RYK-Sounds - Retro Game SFX\\passive
+        gain life-sound.wav\r\n\r\n\r\n=== Fonts ===\r\n\r\nBebas by Dharma Type: 
+        \r\nhttps://www.dafont.com/bebas.font  \r\nhttp://dharmatype.com  \r\n\r\n\r\nMicro
+        Chat by VEXED:  \r\nhttps://v3x3d.itch.io/micro-chat  "
+      objectReference: {fileID: 0}
     - target: {fileID: 5178357485533230125, guid: fd9614d95e2023243a954aef87d12c54, type: 3}
       propertyPath: m_Size
       value: 0.3565749

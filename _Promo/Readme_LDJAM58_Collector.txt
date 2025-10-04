@@ -21,8 +21,8 @@ Notes:
 
 -----------------------
 
-Full credits + Source code + Cheats
-https://github.com/AlexisDrain/Arise1313
+Full credits + Source code:  
+https://github.com/AlexisDrain/LDJAM58-Collector  
 
 
 === Credits ===
@@ -30,6 +30,7 @@ A game by Alexis Clay
 https://alexclay.itch.io/
 
 No generative AI was used in the creation of this game.
+
 
 === Music (in order of appearance) ===
 - none yet
@@ -72,6 +73,14 @@ Sonniss 2023 - Game Audio Bundle\RYK-Sounds - Retro Game SFX\teleporting-sound 5
 Sonniss 2023 - Game Audio Bundle\RYK-Sounds - Retro Game SFX\passive gain life-sound.wav
 
 
-=== Font ===
-Micro Chat:  
+=== Fonts ===
+
+Micro Chat by VEXED (Pixel art font):  
 https://v3x3d.itch.io/micro-chat  
+
+Bebas by Dharma Type (Menues font):  
+https://www.dafont.com/bebas.font  
+http://dharmatype.com  
+
+LiberationSans by Red Hat - OFL (Credits font):  
+https://www.dafont.com/liberation-sans.font  
