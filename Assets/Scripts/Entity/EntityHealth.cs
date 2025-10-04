@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EntityHealth : MonoBehaviour {
+    public int defaultHealth = 100;
+    public GameObject healthBar;
+    public SpriteRenderer healthBarBar;
     public List<AudioClip> clipDeath;
     public List<AudioClip> clipHurt;
-    public int defaultHealth = 3;
-    public bool bigAntDeadbody = false;
     // public bool doNotCountKill = false;
 
     // private Vector3 originPosition;
     // private Vector2 originCamCoords;
     [Header("read only")]
-    public int _currentHealth = 3;
+    public int _currentHealth = 100;
 
     void Awake()
     {
 
         _currentHealth = defaultHealth;
+        healthBar.SetActive(false);
         /*
         // save entity map coords
         originCamCoords = new Vector2(transform.position.x / GameManager.cameraBounds.x,
@@ -31,7 +33,11 @@ public class EntityHealth : MonoBehaviour {
     }
     public void AddDamage(int damage=1) {
         _currentHealth -= damage;
-        if(_currentHealth > 0) {
+
+        healthBar.SetActive(true); // starts false
+        healthBarBar.size = new Vector2(_currentHealth / 100f * 3.6875f, healthBarBar.size.y);
+
+        if (_currentHealth > 0) {
             if(clipHurt.Count > 0) {
                 GetComponent<AudioSource>().clip = clipHurt[Random.Range(0, clipHurt.Count)];
                 GetComponent<AudioSource>().PlayWebGL();

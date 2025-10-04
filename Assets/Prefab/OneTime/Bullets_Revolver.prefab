@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5957922340056036341}
   - component: {fileID: 7265532555216938588}
   - component: {fileID: 4425315980335280642}
+  - component: {fileID: 5270827528621790067}
   m_Layer: 0
   m_Name: Bullets_Revolver
   m_TagString: Untagged
@@ -49,7 +50,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -82,6 +83,19 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 116
   m_CollisionDetection: 1
+--- !u!114 &5270827528621790067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3760233896618717119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cad7bb02c16fc049963ee0755af4b78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageValue: 20
 --- !u!1 &8165034948184236916
 GameObject:
   m_ObjectHideFlags: 0
