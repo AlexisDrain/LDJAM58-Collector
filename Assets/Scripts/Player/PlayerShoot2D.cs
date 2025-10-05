@@ -7,6 +7,7 @@ public enum Weapon {
     machinegun,
     missilelauncher,
     pistol,
+    shotgun,
 }
 public class PlayerShoot2D : MonoBehaviour {
     public Weapon myWeapon;
@@ -32,8 +33,11 @@ public class PlayerShoot2D : MonoBehaviour {
 
     }
     public IEnumerator ShootCountdown() {
-        yield return new WaitForSeconds(gunShootDelayOffset);
-
+        if(GameManager.playerInv.GetChild(0) == transform) {
+            // if this is the first gun. Shoot without a delay
+        } else {
+            yield return new WaitForSeconds(gunShootDelayOffset);
+        }
 
         Vector3 direction = (_mousePosition - transform.position).normalized;
 
@@ -46,6 +50,13 @@ public class PlayerShoot2D : MonoBehaviour {
         } else if (myWeapon == Weapon.pistol) {
             GameObject bullet = GameManager.pool_bulletsRevolver.Spawn(transform.position);
             bullet.GetComponent<EntityMove>().SetDirection(direction, GameManager.playerTrans.GetComponent<Collider>());
+        } else if (myWeapon == Weapon.shotgun) {
+            GameObject bullet1 = GameManager.pool_bulletsRevolver.Spawn(transform.position);
+            GameObject bullet2 = GameManager.pool_bulletsRevolver.Spawn(transform.position);
+            GameObject bullet3 = GameManager.pool_bulletsRevolver.Spawn(transform.position);
+            bullet1.GetComponent<EntityMove>().SetDirection(Quaternion.Euler(0f, -15f, 0f) * direction, GameManager.playerTrans.GetComponent<Collider>());
+            bullet2.GetComponent<EntityMove>().SetDirection(Quaternion.Euler(0f, 0f  , 0f) * direction, GameManager.playerTrans.GetComponent<Collider>());
+            bullet3.GetComponent<EntityMove>().SetDirection(Quaternion.Euler(0f, 15f , 0f) * direction, GameManager.playerTrans.GetComponent<Collider>());
         }
 
         // sfx
