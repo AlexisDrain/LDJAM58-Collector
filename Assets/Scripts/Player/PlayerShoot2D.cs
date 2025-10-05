@@ -46,9 +46,6 @@ public class PlayerShoot2D : MonoBehaviour {
             bullet1.GetComponent<EntityMove>().SetDirection(Quaternion.Euler(0f, 0f, 0f) * direction, GameManager.playerTrans.GetComponent<Collider>());
             currentAmmo -= 1;
             GetComponent<AudioSource>().clip = shootClips[0];
-            if(GetComponent<AudioSource>().isPlaying == false) {
-                GetComponent<AudioSource>().PlayWebGL();
-            }
             yield return new WaitForSeconds(0.1f);
             GameObject bullet2 = GameManager.pool_bulletsRevolver.Spawn(transform.position);
             bullet2.GetComponent<EntityMove>().SetDirection(Quaternion.Euler(0f, -5f, 0f) * direction, GameManager.playerTrans.GetComponent<Collider>());
@@ -56,6 +53,10 @@ public class PlayerShoot2D : MonoBehaviour {
             yield return new WaitForSeconds(0.1f);
             GameObject bullet3 = GameManager.pool_bulletsRevolver.Spawn(transform.position);
             bullet3.GetComponent<EntityMove>().SetDirection(Quaternion.Euler(0f, 5f, 0f) * direction, GameManager.playerTrans.GetComponent<Collider>());
+
+            if (Input.GetButton("Shoot") == false) {
+                GetComponent<AudioSource>().StopWebGL();
+            }
             // bullet.GetComponent<EntityMove>().SetDirection(_mousePosition - transform.position, GameManager.playerTransform.GetComponent<Collider>());
         } else if (myWeapon == Weapon.missilelauncher) {
             GameObject missile = GameManager.pool_bulletsMissiles.Spawn(transform.position);
@@ -88,6 +89,14 @@ public class PlayerShoot2D : MonoBehaviour {
         if (currentAmmo <= 0) {
             Destroy(weaponUI);
             Destroy(gameObject);
+        }
+    }
+    private void Update() {
+        // sound for the tommy gun
+        if (myWeapon == Weapon.machinegun) {
+            if (Input.GetButton("Shoot") && GetComponent<AudioSource>().isPlaying == false) {
+                GetComponent<AudioSource>().PlayWebGL();
+            }
         }
     }
     private void FixedUpdate() {
