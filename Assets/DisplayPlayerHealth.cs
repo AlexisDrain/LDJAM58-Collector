@@ -19,40 +19,38 @@ public class DisplayPlayerHealth : MonoBehaviour
             sprites[3].GetComponent<Image>().sprite = sprite_healthEmpty;
             sprites[4].GetComponent<Image>().sprite = sprite_healthEmpty;
         }
-        if (newHealth == 20) {
+        else if (newHealth == 20) {
             sprites[0].GetComponent<Image>().sprite = sprite_healthFull;
             sprites[1].GetComponent<Image>().sprite = sprite_healthEmpty;
             sprites[2].GetComponent<Image>().sprite = sprite_healthEmpty;
             sprites[3].GetComponent<Image>().sprite = sprite_healthEmpty;
             sprites[4].GetComponent<Image>().sprite = sprite_healthEmpty;
-        }
-        if (newHealth == 40) {
+        } else if (newHealth == 40) {
             sprites[0].GetComponent<Image>().sprite = sprite_healthFull;
             sprites[1].GetComponent<Image>().sprite = sprite_healthFull;
             sprites[2].GetComponent<Image>().sprite = sprite_healthEmpty;
             sprites[3].GetComponent<Image>().sprite = sprite_healthEmpty;
             sprites[4].GetComponent<Image>().sprite = sprite_healthEmpty;
-        }
-        if (newHealth == 60) {
+        } else if (newHealth == 60) {
             sprites[0].GetComponent<Image>().sprite = sprite_healthFull;
             sprites[1].GetComponent<Image>().sprite = sprite_healthFull;
             sprites[2].GetComponent<Image>().sprite = sprite_healthFull;
             sprites[3].GetComponent<Image>().sprite = sprite_healthEmpty;
             sprites[4].GetComponent<Image>().sprite = sprite_healthEmpty;
-        }
-        if (newHealth == 80) {
+        } else if (newHealth == 80) {
             sprites[0].GetComponent<Image>().sprite = sprite_healthFull;
             sprites[1].GetComponent<Image>().sprite = sprite_healthFull;
             sprites[2].GetComponent<Image>().sprite = sprite_healthFull;
             sprites[3].GetComponent<Image>().sprite = sprite_healthFull;
             sprites[4].GetComponent<Image>().sprite = sprite_healthEmpty;
-        }
-        if (newHealth == 100) {
+        } else if (newHealth == 100) {
             sprites[0].GetComponent<Image>().sprite = sprite_healthFull;
             sprites[1].GetComponent<Image>().sprite = sprite_healthFull;
             sprites[2].GetComponent<Image>().sprite = sprite_healthFull;
             sprites[3].GetComponent<Image>().sprite = sprite_healthFull;
             sprites[4].GetComponent<Image>().sprite = sprite_healthFull;
+        } else {
+            print("Warning: player health is not divisible by 20!");
         }
     }
 }

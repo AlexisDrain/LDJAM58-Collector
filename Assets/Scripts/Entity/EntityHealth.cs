@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EntityHealth : MonoBehaviour {
-    public int defaultHealth = 100;
+    public float defaultHealth = 100;
     public GameObject healthBar;
     public SpriteRenderer healthBarBar;
     public List<AudioClip> clipDeath;
@@ -13,7 +13,7 @@ public class EntityHealth : MonoBehaviour {
     // private Vector3 originPosition;
     // private Vector2 originCamCoords;
     [Header("read only")]
-    public int _currentHealth = 100;
+    public float _currentHealth = 100;
 
     void Awake()
     {
@@ -35,7 +35,7 @@ public class EntityHealth : MonoBehaviour {
         _currentHealth -= damage;
 
         healthBar.SetActive(true); // starts false
-        healthBarBar.size = new Vector2(_currentHealth / 100f * 3.6875f, healthBarBar.size.y);
+        healthBarBar.size = new Vector2(_currentHealth / defaultHealth * 3.6875f, healthBarBar.size.y);
 
         if (_currentHealth > 0) {
             if(clipHurt.Count > 0) {

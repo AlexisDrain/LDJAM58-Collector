@@ -22,7 +22,7 @@ public class WeaponPickup : MonoBehaviour {
         newGun.transform.SetAsFirstSibling();
         newGun.GetComponent<PlayerShoot2D>().gunShootDelayOffset = Random.Range(0f, 0.7f);
         newGun.GetComponent<PlayerShoot2D>().currentAmmo = defaultAmmo;
-        newGun.GetComponent<TeleGunesis>().telegunPosOffset = new Vector2(Random.Range(-2f, 2f), Random.Range(-2f, 2f));
+        newGun.GetComponent<TeleGunesis>().telegunPosOffset = new Vector2(Random.Range(-1.25f, 1.25f), Random.Range(-1.25f, 1.25f));
         newGun.GetComponent<PlayerShoot2D>().weaponUI = newGunMenu;
         newGun.GetComponent<PlayerShoot2D>().weaponUIAmmoCount = newGunMenu.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
         newGun.GetComponent<PlayerShoot2D>().weaponUIAmmoCount.text = defaultAmmo.ToString();

@@ -2286,7 +2286,6 @@ GameObject:
   - component: {fileID: 5270827528621790067}
   - component: {fileID: 3075962649120626461}
   - component: {fileID: 4023684568793220991}
-  - component: {fileID: 4543110586771091103}
   - component: {fileID: 4250490508276132402}
   m_Layer: 7
   m_Name: Explosion
@@ -2373,19 +2372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onTouchEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4543110586771091103}
-        m_TargetAssemblyTypeName: SpawnExplosion, Assembly-CSharp
-        m_MethodName: InvokeSpawnExplosion
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   destroyOnTouchAnything: 0
   destroySelfOnInvoke: 0
   damageValue: 60
@@ -2396,7 +2383,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3760233896618717119}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 099e71c4ffa9ef44189b54c30bf2cec0, type: 3}
   m_Name: 
@@ -2439,18 +2426,6 @@ MonoBehaviour:
   startOnEnable: 1
   startOnStart: 0
   restartTimerOnReset: 1
---- !u!114 &4543110586771091103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3760233896618717119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cb52c91885b1f143ba348a93e1841fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &4250490508276132402
 AudioSource:
   m_ObjectHideFlags: 0

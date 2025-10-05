@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public static GameObject mainMenu;
     public static GameObject creditsMenu;
     public static Transform weaponMenu;
+    public static GameObject dialogue;
     public static GameObject deathMessage;
     public static DisplayPlayerHealth displayPlayerHealth;
 
@@ -40,6 +41,8 @@ public class GameManager : MonoBehaviour
         creditsMenu = GameObject.Find("CreditsMenu").gameObject;
         creditsMenu.SetActive(false);
         weaponMenu = GameObject.Find("Canvas/WeaponMenu").transform;
+        dialogue = GameObject.Find("Canvas/Dialogue");
+        dialogue.SetActive(false);
         deathMessage = GameObject.Find("Canvas/DeathMessage");
         deathMessage.SetActive(false);
         displayPlayerHealth = GameObject.Find("Canvas/PlayerHealth").GetComponent<DisplayPlayerHealth>();
