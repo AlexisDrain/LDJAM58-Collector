@@ -42,7 +42,20 @@ public class PlayerShoot2D : MonoBehaviour {
         Vector3 direction = (_mousePosition - transform.position).normalized;
 
         if (myWeapon == Weapon.machinegun) {
-            GameObject bullet = GameManager.pool_bulletsRevolver.Spawn(transform.position);
+            GameObject bullet1 = GameManager.pool_bulletsRevolver.Spawn(transform.position);
+            bullet1.GetComponent<EntityMove>().SetDirection(Quaternion.Euler(0f, 0f, 0f) * direction, GameManager.playerTrans.GetComponent<Collider>());
+            currentAmmo -= 1;
+            GetComponent<AudioSource>().clip = shootClips[0];
+            if(GetComponent<AudioSource>().isPlaying == false) {
+                GetComponent<AudioSource>().PlayWebGL();
+            }
+            yield return new WaitForSeconds(0.1f);
+            GameObject bullet2 = GameManager.pool_bulletsRevolver.Spawn(transform.position);
+            bullet2.GetComponent<EntityMove>().SetDirection(Quaternion.Euler(0f, -5f, 0f) * direction, GameManager.playerTrans.GetComponent<Collider>());
+            currentAmmo -= 1;
+            yield return new WaitForSeconds(0.1f);
+            GameObject bullet3 = GameManager.pool_bulletsRevolver.Spawn(transform.position);
+            bullet3.GetComponent<EntityMove>().SetDirection(Quaternion.Euler(0f, 5f, 0f) * direction, GameManager.playerTrans.GetComponent<Collider>());
             // bullet.GetComponent<EntityMove>().SetDirection(_mousePosition - transform.position, GameManager.playerTransform.GetComponent<Collider>());
         } else if (myWeapon == Weapon.missilelauncher) {
             GameObject missile = GameManager.pool_bulletsMissiles.Spawn(transform.position);
@@ -62,7 +75,9 @@ public class PlayerShoot2D : MonoBehaviour {
         // sfx
         int randomSFX = Random.Range(0, shootClips.Count);
         GetComponent<AudioSource>().clip = shootClips[randomSFX];
-        GetComponent<AudioSource>().PlayWebGL();
+        if (myWeapon != Weapon.machinegun) {
+            GetComponent<AudioSource>().PlayWebGL();
+        }
         //GameManager.SpawnLoudAudio(shootClips[randomSFX], Vector2.one, 0.3f);
 
         // player pushback
@@ -79,7 +94,6 @@ public class PlayerShoot2D : MonoBehaviour {
         if (nextShotCountdown > 0.0f) {
             nextShotCountdown -= Time.deltaTime;
         }
-
 
         if (GameManager.playerInMenu == true || GameManager.playerIsDead == true) {
             return;

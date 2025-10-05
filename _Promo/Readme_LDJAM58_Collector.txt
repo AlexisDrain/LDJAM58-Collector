@@ -72,6 +72,9 @@ loy's gun bullet case in.wav by martian -- https://freesound.org/s/182261/ -- Li
 - Eyeball enemy bullet:
 Sonnis 2017 - Game Audio Bundle\Fascinated Sound - Scene Shop Tool Box\Impact Nail Gun 01 Single Shot Compressed Air and Action.wav
 
+- Machinegun:  
+Sonniss 2020 - Game Audio Bundle\Super Thump - Weapons of World War II - Designed\STDSGN_WoWW2_Wep_MG_M1919_Machinegun_Auto-Burst_Shot_X6.wav
+
 - Guns:
 Sonniss 2017 - Game Audio Bundle\Gamemaster Audio -  Gun Sound Pack\gun_revolver_pistol_shot_04.wav
 Sonnis 2020 - Game Audio Bundle\Super Thump - Weapons of World War II - Designed\STDSGN_WoWW2_Wep_MG_M1919_Machinegun_Auto-Burst_Shot_X6.wav
