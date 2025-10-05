@@ -61,7 +61,9 @@ public class PlayerShoot2D : MonoBehaviour {
 
         // sfx
         int randomSFX = Random.Range(0, shootClips.Count);
-        GameManager.SpawnLoudAudio(shootClips[randomSFX]);
+        GetComponent<AudioSource>().clip = shootClips[randomSFX];
+        GetComponent<AudioSource>().PlayWebGL();
+        //GameManager.SpawnLoudAudio(shootClips[randomSFX], Vector2.one, 0.3f);
 
         // player pushback
         GameManager.playerTrans.GetComponent<Rigidbody>().AddForce(-1f * direction * playerPushbackForce, ForceMode.Force);

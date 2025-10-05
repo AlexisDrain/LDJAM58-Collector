@@ -28,7 +28,7 @@ public class EntityLookAt : MonoBehaviour {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Vector3.Distance(transform.position, Camera.main.transform.position)));
             direction = new Vector3(mousePos.x, mousePos.y, 0f) - new Vector3(transform.position.x, transform.position.y, 0f);
         } else {
-            direction = new Vector3(targetTransform.position.x, targetTransform.position.y, targetTransform.position.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            direction = new Vector3(targetTransform.position.x, targetTransform.position.z, 0f) - new Vector3(transform.position.x, transform.position.z, 0f);
         }
         direction.Normalize();
 

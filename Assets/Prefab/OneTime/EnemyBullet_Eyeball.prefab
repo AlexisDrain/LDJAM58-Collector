@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 5957922340056036341}
   - component: {fileID: 7265532555216938588}
   - component: {fileID: 4425315980335280642}
-  - component: {fileID: 5270827528621790067}
   - component: {fileID: 3075962649120626461}
   - component: {fileID: 4023684568793220991}
+  - component: {fileID: 6893938550433193}
   m_Layer: 7
-  m_Name: Bullets_Revolver
+  m_Name: EnemyBullet_Eyeball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,24 +85,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 116
   m_CollisionDetection: 1
---- !u!114 &5270827528621790067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3760233896618717119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cad7bb02c16fc049963ee0755af4b78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onTouchEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  destroyOnTouchAnything: 1
-  destroySelfOnInvoke: 1
-  damageValue: 20
 --- !u!114 &3075962649120626461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099e71c4ffa9ef44189b54c30bf2cec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addForce: 100
-  maxSpeed: 30
+  addForce: 50
+  maxSpeed: 15
   lookTowardsVelocity: 0
   spawner: {fileID: 0}
   _direction: {x: 0, y: 0, z: 0}
@@ -153,6 +135,24 @@ MonoBehaviour:
   startOnEnable: 1
   startOnStart: 0
   restartTimerOnReset: 1
+--- !u!114 &6893938550433193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3760233896618717119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8edab0fdcc8b83b4a8f0f07dccf78664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTouchEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyOnTouchAnything: 1
+  destroySelfOnInvoke: 1
+  damageValue: 20
 --- !u!1 &8165034948184236916
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +228,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 48ff447392b853747878ea3c5c853893, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -311,8 +311,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 0, b: 0, a: 1}
+      key1: {r: 1, g: 0, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -336,7 +336,7 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0

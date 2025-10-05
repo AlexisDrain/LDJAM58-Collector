@@ -51,6 +51,10 @@ public class Pool : MonoBehaviour {
             //if (obj.GetComponent<Rigidbody>() != null) {
             //	obj.GetComponent<Rigidbody>().velocity = Vector3.zero;
             //}
+            if (obj.GetComponent<Rigidbody>() != null) {
+                obj.GetComponent<Rigidbody>().position = position;
+                obj.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            }
             obj.transform.position = position;
             obj.SetActive(false);
 			obj.SetActive(true);
@@ -68,7 +72,8 @@ public class Pool : MonoBehaviour {
 				GameObject obj = pooledObjects [i];
 
 				if (obj.GetComponent<Rigidbody>() != null) {
-					obj.GetComponent<Rigidbody>().velocity = Vector3.zero;
+					obj.GetComponent<Rigidbody>().position = position;
+                    obj.GetComponent<Rigidbody>().velocity = Vector3.zero;
 				}
 				obj.transform.position = position;
 				obj.SetActive(true);

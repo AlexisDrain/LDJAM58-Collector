@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private static Pool pool_LoudAudioSource;
     public static Pool pool_bulletsRevolver;
     public static Pool pool_bulletsMissiles;
+    public static Pool pool_enemyBulletsEyeball;
     public static Pool pool_explosions;
     public static ParticleSystem particles_BloodKill;
     public static ParticleSystem particles_BloodDamage;
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
         pool_LoudAudioSource = transform.Find("pool_LoudAudioSource").GetComponent<Pool>();
         pool_bulletsRevolver = transform.Find("pool_BulletsRevolver").GetComponent<Pool>();
         pool_bulletsMissiles = transform.Find("pool_BulletsMissiles").GetComponent<Pool>();
+        pool_enemyBulletsEyeball = transform.Find("pool_EnemyBulletsEyeball").GetComponent<Pool>();
         pool_explosions = transform.Find("pool_Explosions").GetComponent<Pool>();
         particles_BloodKill = transform.Find("Particles_BloodKill").GetComponent<ParticleSystem>();
         particles_BloodDamage = transform.Find("Particles_BloodDamage").GetComponent<ParticleSystem>();
