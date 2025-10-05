@@ -32,8 +32,15 @@ https://alexclay.itch.io/
 No generative AI was used in the creation of this game.
 
 
-=== Music (in order of appearance) ===
-- none yet
+=== Music ===
+- Spark by Johan Vandegriff. Free Music Archive (CC BY):  
+https://freemusicarchive.org/music/johan-vandegriff/0x07e7
+
+- moonshine by Johan Vandegriff. Free Music Archive (CC BY):  
+https://freemusicarchive.org/music/johan-vandegriff/0x07e7
+
+- NCRS 03 DESCENDING AIR CURRENT FULL Loop  
+https://wowsound.com/our-music/tracks/ncrs-03-descending-air-current-full-loop.aspx  
 
 
 === SFX ===
