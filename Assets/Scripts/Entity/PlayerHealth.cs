@@ -4,32 +4,42 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour {
     public AudioClip clipPlayerHurt;
-    public SpriteRenderer mySprite;
+    public AudioClip clipPlayerKill;
+    public GameObject playerGraphics;
     // public List<AudioClip> clipDeath;
-    public int defaultHealth = 3;
+    public int defaultHealth = 100;
 
     [Header("read only")]
-    public int _currentHealth = 3;
+    public int _currentHealth = 100;
 
     void Awake()
     {
-
-        // GameManager.playerChangeRoomEvent.AddListener(ResetHealth);
         _currentHealth = defaultHealth;
     }
     public void ResetHealth() {
-        mySprite.enabled = true;
+        playerGraphics.SetActive(true);
         _currentHealth = defaultHealth;
+        GameManager.displayPlayerHealth.UpdateHealthValue(_currentHealth);
     }
-    public void AddDamage(int damage=1) {
-        if (_currentHealth <= 0) { // why we check this variable twice? player hitbox is still active at death.
+    public void AddDamage(int damage=20) {
+        if (_currentHealth <= 0) { // why we check this variable twice? Because player hitbox is still active at death.
             return;
         }
         _currentHealth -= damage;
-        GameManager.SpawnLoudAudio(clipPlayerHurt);
+
+        GameManager.displayPlayerHealth.UpdateHealthValue(_currentHealth);
+
+        if(_currentHealth >= 1) {
+            GameManager.SpawnLoudAudio(clipPlayerHurt);
+            GameManager.particles_BloodDamage.transform.position = transform.position;
+            GameManager.particles_BloodDamage.Play();
+        }
         if(_currentHealth <= 0) {
+            GameManager.SpawnLoudAudio(clipPlayerKill);
+            GameManager.particles_BloodKill.transform.position = transform.position;
+            GameManager.particles_BloodKill.Play();
             GameManager.KillPlayer();
-            mySprite.enabled = false;
+            playerGraphics.SetActive(false);
             return;
         }
     }

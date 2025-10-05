@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody>();
+        myAnimator.keepAnimatorStateOnDisable = true;
     }
 
     private void Update() {

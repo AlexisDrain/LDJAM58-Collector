@@ -1,34 +1,34 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TriggerHurtEntity : MonoBehaviour
+public class HurtPlayer : MonoBehaviour
 {
     public UnityEvent onTouchEvent;
     public bool destroyOnTouchAnything = true;
     public bool destroySelfOnInvoke = true;
     public int damageValue = 1;
-    void Start()
-    {
-        
+    void Start() {
+
     }
 
-    void OnCollisionEnter(Collision col)
-    {
-        if(col.collider.gameObject.GetComponent<EntityHealth>()) {
-            col.collider.gameObject.GetComponent<EntityHealth>().AddDamage(damageValue);
+    void OnCollisionEnter(Collision col) {
+        if (col.collider.gameObject.GetComponent<PlayerHealth>()) {
+            col.collider.gameObject.GetComponent<PlayerHealth>().AddDamage(damageValue);
             onTouchEvent.Invoke();
             if (destroySelfOnInvoke) {
                 gameObject.SetActive(false);
             }
         }
-        if(destroyOnTouchAnything == true) {
+        if (destroyOnTouchAnything == true) {
             onTouchEvent.Invoke();
             gameObject.SetActive(false);
         }
     }
     void OnTriggerEnter(Collider col) {
-        if (col.gameObject.GetComponent<EntityHealth>()) {
-            col.gameObject.GetComponent<EntityHealth>().AddDamage(damageValue);
+        if (col.gameObject.GetComponent<PlayerHealth>()) {
+            col.gameObject.GetComponent<PlayerHealth>().AddDamage(damageValue);
             onTouchEvent.Invoke();
             if (destroySelfOnInvoke) {
                 gameObject.SetActive(false);

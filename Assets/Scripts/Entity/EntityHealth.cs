@@ -42,8 +42,8 @@ public class EntityHealth : MonoBehaviour {
                 GetComponent<AudioSource>().clip = clipHurt[Random.Range(0, clipHurt.Count)];
                 GetComponent<AudioSource>().PlayWebGL();
             }
-            GameManager.Particles_BloodDamage.transform.position = transform.position;
-            GameManager.Particles_BloodDamage.Play();
+            GameManager.particles_BloodDamage.transform.position = transform.position;
+            GameManager.particles_BloodDamage.Play();
         }
         if(_currentHealth <= 0) {
             if(gameObject.CompareTag("Player")) {

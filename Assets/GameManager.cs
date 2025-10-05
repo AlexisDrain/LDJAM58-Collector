@@ -8,18 +8,22 @@ public class GameManager : MonoBehaviour
     public static bool playerInMenu = true;
     public static bool playerIsDead = false;
 
+    public Transform playerCheckpoint;
+
     public static Transform playerTrans;
     public static Rigidbody playerRigidbody;
     public static GameObject mainMenu;
     public static GameObject creditsMenu;
     public static Transform weaponMenu;
+    public static GameObject deathMessage;
+    public static DisplayPlayerHealth displayPlayerHealth;
 
     private static Pool pool_LoudAudioSource;
     public static Pool pool_bulletsRevolver;
     public static Pool pool_bulletsMissiles;
     public static Pool pool_explosions;
     public static ParticleSystem particles_BloodKill;
-    public static ParticleSystem Particles_BloodDamage;
+    public static ParticleSystem particles_BloodDamage;
 
     public static UnityEvent playerReviveEvent = new UnityEvent();
 
@@ -34,13 +38,16 @@ public class GameManager : MonoBehaviour
         creditsMenu = GameObject.Find("CreditsMenu").gameObject;
         creditsMenu.SetActive(false);
         weaponMenu = GameObject.Find("Canvas/WeaponMenu").transform;
+        deathMessage = GameObject.Find("Canvas/DeathMessage");
+        deathMessage.SetActive(false);
+        displayPlayerHealth = GameObject.Find("Canvas/PlayerHealth").GetComponent<DisplayPlayerHealth>();
 
         pool_LoudAudioSource = transform.Find("pool_LoudAudioSource").GetComponent<Pool>();
         pool_bulletsRevolver = transform.Find("pool_BulletsRevolver").GetComponent<Pool>();
         pool_bulletsMissiles = transform.Find("pool_BulletsMissiles").GetComponent<Pool>();
         pool_explosions = transform.Find("pool_Explosions").GetComponent<Pool>();
         particles_BloodKill = transform.Find("Particles_BloodKill").GetComponent<ParticleSystem>();
-        Particles_BloodDamage = transform.Find("Particles_BloodDamage").GetComponent<ParticleSystem>();
+        particles_BloodDamage = transform.Find("Particles_BloodDamage").GetComponent<ParticleSystem>();
 
         //Cursor.lockState = CursorLockMode.None;
         Cursor.visible = false;
@@ -48,12 +55,30 @@ public class GameManager : MonoBehaviour
 
     public static void KillPlayer() {
         playerIsDead = true;
+        deathMessage.SetActive(true);
     }
     public void StartGame() {
         Time.timeScale = 1f;
         playerInMenu = false;
+        playerIsDead = false;
         mainMenu.SetActive(false);
         creditsMenu.SetActive(false);
+        deathMessage.SetActive(false);
+
+        playerTrans.GetComponent<Rigidbody>().position = playerCheckpoint.position;
+        playerTrans.position = playerCheckpoint.position;
+        playerTrans.GetComponent<PlayerHealth>().ResetHealth();
+    }
+    public void RevivePlayer() {
+        playerIsDead = false;
+        mainMenu.SetActive(false);
+        creditsMenu.SetActive(false);
+        deathMessage.SetActive(false);
+
+        playerTrans.GetComponent<Rigidbody>().position = playerCheckpoint.position;
+        playerTrans.position = playerCheckpoint.position;
+        playerTrans.GetComponent<PlayerHealth>().ResetHealth();
+        playerReviveEvent.Invoke();
     }
     public void ResumeGame() {
         Time.timeScale = 1f;
@@ -72,6 +97,10 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         if (Input.GetMouseButtonDown(0) && Cursor.visible) {
             Cursor.visible = false;
+        }
+
+        if(playerIsDead == true && playerInMenu == false && Input.GetButtonDown("Revive")) {
+            RevivePlayer();
         }
 
         if(Input.GetButtonDown("Pause")) {
