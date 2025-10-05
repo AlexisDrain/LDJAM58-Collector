@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8192820873254353829}
   - component: {fileID: 7511372999498399673}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7811179630460174107}
   - component: {fileID: 3398906085912885011}
   - component: {fileID: 7525055504503231661}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Item_Weapon_missileLauncher
   m_TagString: Untagged
   m_Icon: {fileID: 0}

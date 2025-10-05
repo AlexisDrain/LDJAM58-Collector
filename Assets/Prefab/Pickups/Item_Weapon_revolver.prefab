@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5170821053119363389}
   - component: {fileID: 3395037533618151451}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 6710513062819416130}
   - component: {fileID: 622554011919499093}
   - component: {fileID: 1463044157988419195}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Item_Weapon_revolver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
