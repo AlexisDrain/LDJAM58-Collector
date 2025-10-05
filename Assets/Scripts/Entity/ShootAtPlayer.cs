@@ -4,8 +4,13 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
-public class ShootAtPlayer : MonoBehaviour {
+public enum EnemyWeapon {
+    eyeball,
+    zombie
+}
 
+public class ShootAtPlayer : MonoBehaviour {
+    public EnemyWeapon myEnemyWeapon = EnemyWeapon.eyeball;
     public AudioClip clip_charge;
     public AudioClip clip_shoot;
     public Animator myAnimator;
@@ -44,28 +49,55 @@ public class ShootAtPlayer : MonoBehaviour {
     }
     
     IEnumerator SpawnBullet() {
-        List<float> angles = new List<float> { -90f, -75f, -60f, -45f, -30f, -15f, 0f, 15f, 30f, 45f, 60f, 75f, 90f };
+        if(myEnemyWeapon == EnemyWeapon.eyeball) {
+            List<float> angles = new List<float> { -90f, -75f, -60f, -45f, -30f, -15f, 0f, 15f, 30f, 45f, 60f, 75f, 90f };
 
-        GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1.2f);
-        GetComponent<AudioSource>().clip = clip_charge;
-        GetComponent<AudioSource>().PlayWebGL();
+            GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1.2f);
+            GetComponent<AudioSource>().clip = clip_charge;
+            GetComponent<AudioSource>().PlayWebGL();
 
-        myAnimator.SetTrigger("Shoot");
-        yield return new WaitForSeconds(1f);
+            myAnimator.SetTrigger("Shoot");
+            yield return new WaitForSeconds(1f);
 
-        for (int i = 0; i < angles.Count; i++) {
-            yield return new WaitForSeconds(0.1f);
-            GameObject obj = GameManager.pool_enemyBulletsEyeball.Spawn(transform.position);
+            for (int i = 0; i < angles.Count; i++) {
+                yield return new WaitForSeconds(0.1f);
+                GameObject obj = GameManager.pool_enemyBulletsEyeball.Spawn(transform.position);
 
-            Vector3 direction = (GameManager.playerTrans.position - transform.position).normalized; // recalculate the direction after ant movement
-            Vector3 rotatedDirection = Quaternion.Euler(0f, angles[i], 0f) * direction;
+                Vector3 direction = (GameManager.playerTrans.position - transform.position).normalized; // recalculate the direction after movement
+                Vector3 rotatedDirection = Quaternion.Euler(0f, angles[i], 0f) * direction;
 
-            obj.GetComponent<EntityMove>().SetDirection(rotatedDirection, GetComponent<Collider>());
+                obj.GetComponent<EntityMove>().SetDirection(rotatedDirection, GetComponent<Collider>());
 
+                GameManager.SpawnLoudAudio(clip_shoot, new Vector2(0.8f, 1.2f), 0.3f);
+                // GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1.2f);
+                // GetComponent<AudioSource>().clip = clip_shoot;
+                // GetComponent<AudioSource>().PlayWebGL();
+            }
+        } else if (myEnemyWeapon == EnemyWeapon.zombie) {
+
+            GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1.2f);
+            GetComponent<AudioSource>().clip = clip_charge;
+            GetComponent<AudioSource>().PlayWebGL();
+
+            myAnimator.SetTrigger("Shoot");
+            yield return new WaitForSeconds(1f);
+            Vector3 direction = (GameManager.playerTrans.position - transform.position).normalized; // recalculate the direction after movement
+            GameObject bullet1 = GameManager.pool_enemyBulletsEyeball.Spawn(transform.position);
+            bullet1.GetComponent<EntityMove>().SetDirection(direction, GetComponent<Collider>());
             GameManager.SpawnLoudAudio(clip_shoot, new Vector2(0.8f, 1.2f), 0.3f);
-            // GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1.2f);
-            // GetComponent<AudioSource>().clip = clip_shoot;
-            // GetComponent<AudioSource>().PlayWebGL();
+
+            yield return new WaitForSeconds(0.1f);
+            direction = (GameManager.playerTrans.position - transform.position).normalized; // recalculate the direction after movement
+            GameObject bullet2 = GameManager.pool_enemyBulletsEyeball.Spawn(transform.position);
+            bullet2.GetComponent<EntityMove>().SetDirection(direction, GetComponent<Collider>());
+            GameManager.SpawnLoudAudio(clip_shoot, new Vector2(0.8f, 1.2f), 0.3f);
+            yield return new WaitForSeconds(0.1f);
+            direction = (GameManager.playerTrans.position - transform.position).normalized; // recalculate the direction after movement
+            GameObject bullet3 = GameManager.pool_enemyBulletsEyeball.Spawn(transform.position);
+            bullet3.GetComponent<EntityMove>().SetDirection(direction, GetComponent<Collider>());
+            GameManager.SpawnLoudAudio(clip_shoot, new Vector2(0.8f, 1.2f), 0.3f);
         }
+
+
     }
 }

@@ -351,6 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9394a896e1b57244b2b67c60ecbab22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItemEveryOtherEnemy: 0
   defaultHealth: 300
   healthBar: {fileID: 7713793567193005098}
   healthBarBar: {fileID: 1930214098039934815}

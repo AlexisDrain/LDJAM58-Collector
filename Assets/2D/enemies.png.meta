@@ -193,6 +193,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: enemies_4
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 110
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f327718c446bba54f8b1f5e5a631e725
+      internalID: 1241432286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -208,6 +229,7 @@ TextureImporter:
       enemies_1: 1949499763
       enemies_2: 8896657
       enemies_3: 93622941
+      enemies_4: 1241432286
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -45,11 +45,13 @@ public class PlayerShoot2D : MonoBehaviour {
             GameObject bullet1 = GameManager.pool_bulletsRevolver.Spawn(transform.position);
             bullet1.GetComponent<EntityMove>().SetDirection(Quaternion.Euler(0f, 0f, 0f) * direction, GameManager.playerTrans.GetComponent<Collider>());
             currentAmmo -= 1;
+            weaponUIAmmoCount.text = currentAmmo.ToString();
             GetComponent<AudioSource>().clip = shootClips[0];
             yield return new WaitForSeconds(0.1f);
             GameObject bullet2 = GameManager.pool_bulletsRevolver.Spawn(transform.position);
             bullet2.GetComponent<EntityMove>().SetDirection(Quaternion.Euler(0f, -5f, 0f) * direction, GameManager.playerTrans.GetComponent<Collider>());
             currentAmmo -= 1;
+            weaponUIAmmoCount.text = currentAmmo.ToString();
             yield return new WaitForSeconds(0.1f);
             GameObject bullet3 = GameManager.pool_bulletsRevolver.Spawn(transform.position);
             bullet3.GetComponent<EntityMove>().SetDirection(Quaternion.Euler(0f, 5f, 0f) * direction, GameManager.playerTrans.GetComponent<Collider>());
