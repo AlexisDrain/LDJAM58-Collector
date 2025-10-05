@@ -8,6 +8,7 @@ public class EntityHealth : MonoBehaviour {
     public SpriteRenderer healthBarBar;
     public List<AudioClip> clipDeath;
     public List<AudioClip> clipHurt;
+    public GameObject dropItem;
     // public bool doNotCountKill = false;
 
     // private Vector3 originPosition;
@@ -46,27 +47,15 @@ public class EntityHealth : MonoBehaviour {
             GameManager.particles_BloodDamage.Play();
         }
         if(_currentHealth <= 0) {
-            if(gameObject.CompareTag("Player")) {
-                GameManager.KillPlayer();
-                return;
-            }
 
-            /*
-            GameObject deadbody;
-            
-            if(bigAntDeadbody == true) {
-                deadbody = GameManager.pool_antBigDeadbodies.Spawn(transform.position); // GameObject.Instantiate(deadBody, transform.position, Quaternion.identity);
-                GetComponent<ShootAtPlayer>().StopAllCoroutines();
-            } else {
-                deadbody = GameManager.pool_antDeadbodies.Spawn(transform.position); // GameObject.Instantiate(deadBody, transform.position, Quaternion.identity);
-            }
-            deadbody.GetComponent<AudioSource>().clip = clipDeath[Random.Range(0, clipDeath.Count)];
-            deadbody.GetComponent<AudioSource>().PlayWebGL();
-            // hack: deadbody inherets sprite direction from this object
-            deadbody.transform.Find("Sprite").GetComponent<SpriteRenderer>().flipX = GetComponent<SmallAntController>().mySpriteRenderer.flipX;
-            */
             GameManager.particles_BloodKill.transform.position = transform.position;
             GameManager.particles_BloodKill.Play();
+
+            if (dropItem) {
+                GameObject loot = GameObject.Instantiate(dropItem);
+                loot.transform.position = transform.position;
+            }
+
             Destroy(gameObject);
             //gameObject.SetActive(false);
         }

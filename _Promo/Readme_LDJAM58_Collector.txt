@@ -47,7 +47,7 @@ https://wowsound.com/our-music/tracks/ncrs-03-descending-air-current-full-loop.a
 - UI buttons click SFX:
 Halfquake 1 by Muddasheep https://store.steampowered.com/app/644320/Halfquake_Trilogy/ - Attribution-NonCommercial 3.0 Unported  
 
-- UI buttons hover. Player injury sound. Explosions. Crunchy sound effects:  
+- UI buttons hover. Player injury sound. Explosions. Enemy attack charge. Crunchy sound effects:  
 BFXR https://www.bfxr.net/
 
 - Computer logs:
@@ -61,7 +61,6 @@ Sonniss 2020 - Game Audio Bundle\Soundholder - Cat - Meow Library\animals cat Fi
 Sonniss 2018 - Game Audio Bundle\SoundMorph - STEAMPUNK WEAPONS\Steampunk Weapons - Firestorm Flamer - set_1.wav
 
 - Grenade Launcher:
-Sonnis 2017 - Game Audio Bundle\Fascinated Sound - Scene Shop Tool Box\Impact Nail Gun 01 Single Shot Compressed Air and Action.wav
 Granade Launcher.wav by GreenFireSound -- https://freesound.org/s/484109/ -- License: Attribution 3.0
 
 - Explosion:
@@ -69,6 +68,9 @@ Sonniss 2018 - Game Audio Bundle\Gamemaster Audio - Guns, Bullets and Explosions
 
 - Weapon pickup:
 loy's gun bullet case in.wav by martian -- https://freesound.org/s/182261/ -- License: Creative Commons 0
+
+- Eyeball enemy bullet:
+Sonnis 2017 - Game Audio Bundle\Fascinated Sound - Scene Shop Tool Box\Impact Nail Gun 01 Single Shot Compressed Air and Action.wav
 
 - Guns:
 Sonniss 2017 - Game Audio Bundle\Gamemaster Audio -  Gun Sound Pack\gun_revolver_pistol_shot_04.wav

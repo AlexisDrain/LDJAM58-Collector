@@ -356,6 +356,7 @@ MonoBehaviour:
   healthBarBar: {fileID: 1930214098039934815}
   clipDeath: []
   clipHurt: []
+  dropItem: {fileID: 8918015059413887391, guid: 6aa2507562ac26d4684a576b0a94444e, type: 3}
   _currentHealth: 3
 --- !u!114 &5173504249524291634
 MonoBehaviour:
