@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EntityHealth : MonoBehaviour {
+    public bool dropItemEveryOtherEnemy = true;
     public float defaultHealth = 100;
     public GameObject healthBar;
     public SpriteRenderer healthBarBar;
@@ -51,13 +52,24 @@ public class EntityHealth : MonoBehaviour {
             GameManager.particles_BloodKill.transform.position = transform.position;
             GameManager.particles_BloodKill.Play();
 
+            // item drop
             if (dropItem) {
-                GameObject loot = GameObject.Instantiate(dropItem);
-                loot.transform.position = transform.position;
+                if(dropItemEveryOtherEnemy == true) {
+                    if(GameManager.hasDroppedItem == false) {
+                        GameObject loot = GameObject.Instantiate(dropItem);
+                        loot.transform.position = transform.position;
+                        GameManager.hasDroppedItem = true;
+                    } else if (GameManager.hasDroppedItem == true) {
+                        GameManager.hasDroppedItem = false;
+                    }
+                } else if (dropItemEveryOtherEnemy == false) {
+                    GameObject loot = GameObject.Instantiate(dropItem);
+                    loot.transform.position = transform.position;
+                }
+
             }
 
-            Destroy(gameObject);
-            //gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
     /*

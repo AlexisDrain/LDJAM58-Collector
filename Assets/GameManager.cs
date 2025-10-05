@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static bool playerInMenu = true;
     public static bool playerIsDead = false;
+    public static bool hasDroppedItem = false; // used with dropItemEveryOtherEnemy
 
     public Transform playerCheckpoint;
 

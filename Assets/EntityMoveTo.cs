@@ -10,6 +10,8 @@ public class EntityMoveTo : MonoBehaviour
     public Transform target;
     public float sightRange = 10f;
 
+    public bool flipGraphicOnLeft = true;
+    public SpriteRenderer mySpriteRenderer;
     private Rigidbody myRigidbody;
     void Start()
     {
@@ -22,7 +24,17 @@ public class EntityMoveTo : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(Vector3.Distance(transform.position, target.position) <= sightRange) {
+
+        if(flipGraphicOnLeft) {
+            if (mySpriteRenderer.flipX == false && myRigidbody.velocity.x < -1f) {
+                mySpriteRenderer.flipX = true;
+            }
+            if (mySpriteRenderer.flipX == true && myRigidbody.velocity.x > 1f) {
+                mySpriteRenderer.flipX = false;
+            }
+        }
+
+        if (Vector3.Distance(transform.position, target.position) <= sightRange) {
             Vector3 direction = (target.position - transform.position).normalized;
             myRigidbody.AddForce(direction * speed);
         }

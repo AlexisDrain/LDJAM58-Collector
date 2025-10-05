@@ -84,6 +84,15 @@ Sonnis 2020 - Game Audio Bundle\Super Thump - Weapons of World War II - Designed
 Sonniss 2023 - Game Audio Bundle\RYK-Sounds - Retro Game SFX\teleporting-sound 5.wav
 Sonniss 2023 - Game Audio Bundle\RYK-Sounds - Retro Game SFX\passive gain life-sound.wav
 
+- Dialogue Voices:  
+https://tntc-lab.itch.io/godot-voice-generator  
+
+
+=== Code ===
+
+- EdgeDetectionColor shader to draw white lines around 3d objects:
+Unity Standard Assets: https://docs.unity3d.com/540/Documentation/Manual/script-EdgeDetectEffectNormals.html
+
 
 === Fonts ===
 

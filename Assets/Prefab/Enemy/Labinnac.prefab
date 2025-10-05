@@ -271,6 +271,7 @@ MonoBehaviour:
   healthBarBar: {fileID: 4905696015502394826}
   clipDeath: []
   clipHurt: []
+  dropItem: {fileID: 0}
   _currentHealth: 3
 --- !u!114 &7990603736446377824
 MonoBehaviour:
@@ -307,6 +308,8 @@ MonoBehaviour:
   targetIsPlayer: 1
   target: {fileID: 0}
   sightRange: 7
+  flipGraphicOnLeft: 0
+  mySpriteRenderer: {fileID: 0}
 --- !u!1 &3220836854091927373
 GameObject:
   m_ObjectHideFlags: 0
