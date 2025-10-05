@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Transform playerCheckpoint;
 
     public static Transform playerTrans;
+    public static Transform playerInv;
     public static Rigidbody playerRigidbody;
     public static GameObject mainMenu;
     public static GameObject creditsMenu;
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
         playerIsDead = false;
 
         playerTrans = GameObject.Find("Player").transform;
+        playerInv = playerTrans.Find("PlayerInv");
         playerRigidbody = playerTrans.GetComponent<Rigidbody>();
         mainMenu = GameObject.Find("MainMenu").gameObject;
         creditsMenu = GameObject.Find("CreditsMenu").gameObject;
@@ -56,6 +58,10 @@ public class GameManager : MonoBehaviour
     public static void KillPlayer() {
         playerIsDead = true;
         deathMessage.SetActive(true);
+
+        foreach(GameObject obj in playerInv) {
+            Destroy(obj);
+        }
     }
     public void StartGame() {
         Time.timeScale = 1f;
@@ -79,6 +85,10 @@ public class GameManager : MonoBehaviour
         playerTrans.position = playerCheckpoint.position;
         playerTrans.GetComponent<PlayerHealth>().ResetHealth();
         playerReviveEvent.Invoke();
+
+        foreach (GameObject obj in playerInv) {
+            Destroy(obj);
+        }
     }
     public void ResumeGame() {
         Time.timeScale = 1f;

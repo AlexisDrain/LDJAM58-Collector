@@ -56,7 +56,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3158ca604151525448441ed7d6f1ffb1, type: 3}
   gunPositionOffset: 0.1
   gunShootDelayOffset: 0
-  playerPushbackForce: 300
+  playerPushbackForce: 100
   nextShotCountdownDefault: 0.5
   _mousePosition: {x: 0, y: 0, z: 0}
   weaponUI: {fileID: 0}

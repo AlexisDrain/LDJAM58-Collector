@@ -9,6 +9,9 @@ public class PlayerHealth : MonoBehaviour {
     // public List<AudioClip> clipDeath;
     public int defaultHealth = 100;
 
+    public float defaultTimeToEndInvunrability = 1f;
+    private float currentInvunrability = 0f;
+
     [Header("read only")]
     public int _currentHealth = 100;
 
@@ -21,10 +24,17 @@ public class PlayerHealth : MonoBehaviour {
         _currentHealth = defaultHealth;
         GameManager.displayPlayerHealth.UpdateHealthValue(_currentHealth);
     }
+    private void FixedUpdate() {
+        if (currentInvunrability >= 0f) {
+            currentInvunrability-= Time.deltaTime;
+        }
+    }
     public void AddDamage(int damage=20) {
-        if (_currentHealth <= 0) { // why we check this variable twice? Because player hitbox is still active at death.
+        if (currentInvunrability >= 0f
+            || _currentHealth <= 0) { // why we check this variable twice? Because player hitbox is still active at death.
             return;
         }
+        currentInvunrability = defaultTimeToEndInvunrability;
         _currentHealth -= damage;
 
         GameManager.displayPlayerHealth.UpdateHealthValue(_currentHealth);

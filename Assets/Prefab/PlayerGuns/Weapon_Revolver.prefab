@@ -4979,9 +4979,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 111c79ee6e053b54388d9544c3cca148, type: 3}
   gunPositionOffset: 0.1
   gunShootDelayOffset: 0
-  playerPushbackForce: 300
+  playerPushbackForce: 100
   nextShotCountdownDefault: 0.5
   _mousePosition: {x: 0, y: 0, z: 0}
+  weaponUI: {fileID: 0}
+  weaponUIAmmoCount: {fileID: 0}
 --- !u!82 &8953367268854641089
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5090,6 +5092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e435e0fe355ee0c42a73f3da703ff437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  telegunPosOffset: {x: 0, y: 0}
 --- !u!114 &7862882712744761585
 MonoBehaviour:
   m_ObjectHideFlags: 0
