@@ -31,7 +31,7 @@ public class DialogueManager : MonoBehaviour
             nextDialogueBox = 1;
         } else if (newIndex == 1) {
             GameManager.SpawnLoudAudio(clipList[2]);
-            nextDialogueBox = -1;
+            nextDialogueBox = 22;
         } else if (newIndex == 2) {
             dialogueBox.SetActive(false);
             canSkipDialogue = 2f; // slightly longer
@@ -89,6 +89,9 @@ public class DialogueManager : MonoBehaviour
         } else if (newIndex == 20) {
             nextDialogueBox = -1;
         } else if (newIndex == 21) {
+            nextDialogueBox = -1;
+        } else if (newIndex == 22) {
+            GameManager.SpawnLoudAudio(clipList[4]);
             nextDialogueBox = -1;
         } else {
             nextDialogueBox = -1;

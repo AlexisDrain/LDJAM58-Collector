@@ -237,7 +237,7 @@ public class GameManager : MonoBehaviour
             RevivePlayer();
         }
 
-        if(playerInDialogue == false && playerInEnding == false && Input.GetButtonDown("Pause")) {
+        if(playerInEnding == false && playerInDialogue == false && Input.GetButtonDown("Pause")) {
             PauseGame();
         }
     }
