@@ -21,7 +21,7 @@ public class TeleGunesis : MonoBehaviour
 
         startPos = GameManager.playerTrans.position;
 
-        endPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Vector3.Distance(transform.position, Camera.main.transform.position)));
+        endPos = GameManager.mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Vector3.Distance(transform.position, Camera.main.transform.position)));
         // endPos = new Vector3(endPos.x, 1f, endPos.z);
         transform.position = GetPointBetween(startPos, endPos, 0.2f);
         transform.position = new Vector3(transform.position.x + telegunPosOffset.x, 1f, transform.position.z + telegunPosOffset.y);

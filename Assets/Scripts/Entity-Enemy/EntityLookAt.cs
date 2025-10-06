@@ -25,7 +25,7 @@ public class EntityLookAt : MonoBehaviour {
     private Vector3 direction;
     void LateUpdate() {
         if(targetIsMouse == true) {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Vector3.Distance(transform.position, Camera.main.transform.position)));
+            Vector3 mousePos = GameManager.mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Vector3.Distance(transform.position, Camera.main.transform.position)));
             direction = new Vector3(mousePos.x, mousePos.y, 0f) - new Vector3(transform.position.x, transform.position.y, 0f);
         } else {
             direction = new Vector3(targetTransform.position.x, targetTransform.position.z, 0f) - new Vector3(transform.position.x, transform.position.z, 0f);

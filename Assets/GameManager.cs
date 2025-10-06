@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public AudioClip clip_newCheckpoint;
     public static bool playerInMenu = true;
     public static bool playerIsDead = false;
     public static bool playerInDialogue = false;
@@ -14,6 +16,9 @@ public class GameManager : MonoBehaviour
     public Transform playerCheckpoint;
 
     public static GameManager myGameManager;
+    public static Camera mainCamera;
+    public static GameObject cameraCutscene1;
+    public static GameObject cameraCutscene2;
     public static Transform playerTrans;
     public static Transform playerInv;
     public static Rigidbody playerRigidbody;
@@ -46,7 +51,14 @@ public class GameManager : MonoBehaviour
 
         myGameManager = GetComponent<GameManager>();
 
+        mainCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
+        mainCamera.gameObject.SetActive(false);
+        cameraCutscene1 = GameObject.Find("CameraCutscene1");
+        cameraCutscene1.gameObject.SetActive(false);
+        cameraCutscene2 = GameObject.Find("CameraCutscene2");
+        // cameraCutscene2.gameObject.SetActive(false);
         playerTrans = GameObject.Find("Player").transform;
+        playerTrans.Find("LineToMouse").gameObject.SetActive(false);
         playerInv = playerTrans.Find("PlayerInv");
         playerRigidbody = playerTrans.GetComponent<Rigidbody>();
         mainMenu = GameObject.Find("MainMenu").gameObject;
@@ -74,8 +86,17 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
 
     }
+    public static void SwitchCameraToMain() {
+        playerTrans.Find("LineToMouse").gameObject.SetActive(true);
+        mainCamera.gameObject.SetActive(true);
+        cameraCutscene2.gameObject.SetActive(false);
+    }
     public static void ChangeCheckpoint(Transform newCheckpoint) {
+        SpawnLoudAudio(myGameManager.clip_newCheckpoint);
         myGameManager.playerCheckpoint = newCheckpoint;
+        myGameManager.WriteMessage("You reached a new checkpoint!");
+
+        playerTrans.GetComponent<PlayerHealth>().ResetHealth();
     }
     public static void KillPlayer() {
         playerIsDead = true;
@@ -106,7 +127,7 @@ public class GameManager : MonoBehaviour
         creditsMenu.SetActive(false);
         deathMessage.SetActive(false);
 
-        playerCheckpoint = GameObject.Find("checkpoint_silentPath").transform;
+        playerCheckpoint = GameObject.Find("StartGameCheckpoint").transform;
 
         playerTrans.GetComponent<Rigidbody>().position = playerCheckpoint.position;
         playerTrans.position = playerCheckpoint.position;
@@ -116,7 +137,11 @@ public class GameManager : MonoBehaviour
         particles_BloodKill.Clear();
     }
     public void RevivePlayer() {
+        playerInMenu = false;
         playerIsDead = false;
+        playerInDialogue = false;
+        hasDroppedItem = false;
+
         mainMenu.SetActive(false);
         creditsMenu.SetActive(false);
         deathMessage.SetActive(false);
@@ -167,10 +192,13 @@ public class GameManager : MonoBehaviour
             PauseGame();
         }
     }
+    public static void RestartGameScene() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
     public static Vector3 GetMousePositionOnFloor() {
         // Create a ray from the mouse position
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
         float distance = -ray.origin.y / ray.direction.y;
         Vector3 pointOnFloor = ray.origin + ray.direction * distance;

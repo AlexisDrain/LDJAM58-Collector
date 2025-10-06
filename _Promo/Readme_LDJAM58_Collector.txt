@@ -1,23 +1,28 @@
 [Short Description]  
-Shoot, dash, and use dozens of guns!
+Blast hordes of monsters using an unlimited amount of guns!
 
 [Long Description]  
-Shoot, dash, and use dozens of guns!
-
+Blast hordes of monsters using an unlimited amount of guns!
 
 Full credits + Source code:  
 https://github.com/AlexisDrain/LDJAM58-Collector  
 
+LDJAM page:
+https://ldjam.com/events/ludum-dare/58/$415702  
+
+------
 
 Controls:  
-- WASD / Arrow keys:
-- Press P or Esc to pause.  
-- Press left mouse click or E to use/talk.  
+- Move: WASD or Arrow keys.
+- Shoot: Left mouse click.
+- Talk: E.
+- Pause: Esc or P.
 
 Notes:  
 - Performance is better on Chrome than Firefox.  
 - Performance is better with fullscreen disabled.  
 
+Have fun!!
 
 -----------------------
 

@@ -35,8 +35,10 @@ public class EntityMove : MonoBehaviour {
         }
     }
 
-    public void SetDirection(Vector3 newDirection, Collider spawner) {
-        Physics.IgnoreCollision(GetComponent<Collider>(), spawner, true);
+    public void SetDirection(Vector3 newDirection, Collider spawner = null) {
+        if(spawner) {
+            Physics.IgnoreCollision(GetComponent<Collider>(), spawner, true);
+        }
         myRigidbody.velocity = Vector3.zero;
         _direction = newDirection.normalized;
         if (lookTowardsVelocity) {
