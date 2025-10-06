@@ -103,35 +103,34 @@ public class ShootAtPlayer : MonoBehaviour {
             GameManager.SpawnLoudAudio(clip_shoot, new Vector2(0.8f, 1.2f), 0.3f);
         } else if (myEnemyWeapon == EnemyWeapon.labinnacGun) {
 
-            GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1.2f);
-            GetComponent<AudioSource>().clip = clip_charge;
-            GetComponent<AudioSource>().PlayWebGL();
+            // GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1.2f);
+            // GetComponent<AudioSource>().clip = clip_charge;
+            // GetComponent<AudioSource>().PlayWebGL();
 
             Vector3 direction = (GameManager.playerTrans.position - transform.position).normalized; // recalculate the direction after movement
             GameObject bullet1 = GameManager.pool_enemyBulletsEyeball.Spawn(transform.position);
-            bullet1.GetComponent<EntityMove>().SetDirection(direction);
-            GameManager.SpawnLoudAudio(clip_shoot, new Vector2(0.8f, 1.2f), 0.3f);
-
-            yield return new WaitForSeconds(0.1f);
+            bullet1.GetComponent<EntityMove>().SetDirection(direction, transform.parent.GetComponent<Collider>());
+            GameManager.SpawnLoudAudio(clip_shoot, Vector2.one, 0.5f);
+            yield return new WaitForSeconds(0.2f);
             direction = (GameManager.playerTrans.position - transform.position).normalized; // recalculate the direction after movement
             GameObject bullet2 = GameManager.pool_enemyBulletsEyeball.Spawn(transform.position);
-            bullet2.GetComponent<EntityMove>().SetDirection(direction);
-            GameManager.SpawnLoudAudio(clip_shoot, new Vector2(0.8f, 1.2f), 0.3f);
-            yield return new WaitForSeconds(0.1f);
+            bullet2.GetComponent<EntityMove>().SetDirection(direction, transform.parent.GetComponent<Collider>());
+            GameManager.SpawnLoudAudio(clip_shoot, Vector2.one, 0.5f);
+            yield return new WaitForSeconds(0.2f);
             direction = (GameManager.playerTrans.position - transform.position).normalized; // recalculate the direction after movement
             GameObject bullet3 = GameManager.pool_enemyBulletsEyeball.Spawn(transform.position);
-            bullet3.GetComponent<EntityMove>().SetDirection(direction);
-            GameManager.SpawnLoudAudio(clip_shoot, new Vector2(0.8f, 1.2f), 0.3f);
-            yield return new WaitForSeconds(0.1f);
+            bullet3.GetComponent<EntityMove>().SetDirection(direction, transform.parent.GetComponent<Collider>());
+            GameManager.SpawnLoudAudio(clip_shoot, Vector2.one, 0.5f);
+            yield return new WaitForSeconds(0.2f);
             direction = (GameManager.playerTrans.position - transform.position).normalized; // recalculate the direction after movement
             GameObject bullet4 = GameManager.pool_enemyBulletsEyeball.Spawn(transform.position);
-            bullet4.GetComponent<EntityMove>().SetDirection(direction);
-            GameManager.SpawnLoudAudio(clip_shoot, new Vector2(0.8f, 1.2f), 0.3f);
-            yield return new WaitForSeconds(0.1f);
+            bullet4.GetComponent<EntityMove>().SetDirection(direction, transform.parent.GetComponent<Collider>());
+            GameManager.SpawnLoudAudio(clip_shoot, Vector2.one, 0.5f);
+            yield return new WaitForSeconds(0.2f);
             direction = (GameManager.playerTrans.position - transform.position).normalized; // recalculate the direction after movement
             GameObject bullet5 = GameManager.pool_enemyBulletsEyeball.Spawn(transform.position);
-            bullet5.GetComponent<EntityMove>().SetDirection(direction);
-            GameManager.SpawnLoudAudio(clip_shoot, new Vector2(0.8f, 1.2f), 0.3f);
+            bullet5.GetComponent<EntityMove>().SetDirection(direction, transform.parent.GetComponent<Collider>());
+            GameManager.SpawnLoudAudio(clip_shoot, Vector2.one, 0.5f);
         }
 
 

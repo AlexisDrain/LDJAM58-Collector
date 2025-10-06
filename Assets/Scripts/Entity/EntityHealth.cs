@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class EntityHealth : MonoBehaviour {
     public bool dropItemEveryOtherEnemy = true;
@@ -11,6 +13,8 @@ public class EntityHealth : MonoBehaviour {
     public List<AudioClip> clipDeath;
     public GameObject dropItem;
 
+    public UnityEvent onDeathEvent;
+    public Image labinnacHealthbar;
     private Vector3 resetPosition;
     // public bool doNotCountKill = false;
 
@@ -46,8 +50,10 @@ public class EntityHealth : MonoBehaviour {
         }
         _currentHealth = defaultHealth;
 
-        healthBarBar.size = new Vector2(_currentHealth / defaultHealth * 3.6875f, healthBarBar.size.y);
-        healthBar.SetActive(false); // starts false
+        if(labinnacHealthbar == null) {
+            healthBarBar.size = new Vector2(_currentHealth / defaultHealth * 3.6875f, healthBarBar.size.y);
+            healthBar.SetActive(false); // starts false
+        }
 
         transform.position = resetPosition;
         if(GetComponent<Rigidbody>()) {
@@ -67,8 +73,12 @@ public class EntityHealth : MonoBehaviour {
     public void AddDamage(int damage=1) {
         _currentHealth -= damage;
 
-        healthBar.SetActive(true); // starts false
-        healthBarBar.size = new Vector2(_currentHealth / defaultHealth * 3.6875f, healthBarBar.size.y);
+        if (labinnacHealthbar == null) {
+            healthBar.SetActive(true); // starts false
+            healthBarBar.size = new Vector2(_currentHealth / defaultHealth * 3.6875f, healthBarBar.size.y);
+        } else {
+            labinnacHealthbar.fillAmount = _currentHealth / defaultHealth;
+        }
 
         if (GetComponent<EntityMoveTo>()) {
             GetComponent<EntityMoveTo>()._hasSeenPlayer = true;
@@ -113,6 +123,8 @@ public class EntityHealth : MonoBehaviour {
                 }
 
             }
+
+            onDeathEvent.Invoke();
 
             gameObject.SetActive(false);
         }

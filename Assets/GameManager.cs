@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public AudioClip clip_newCheckpoint;
+    public static bool playerInEnding = false;
     public static bool playerInMenu = true;
     public static bool playerIsDead = false;
     public static bool playerInDialogue = false;
@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     public static GameObject deathMessage;
     public static GameObject useMessage;
     public static DisplayPlayerHealth displayPlayerHealth;
+    public static GameObject labinnacHealth;
+    public static GameObject gameEnding;
     public static TextMeshProUGUI debugMessage;
 
     private static Pool pool_LoudAudioSource;
@@ -43,11 +45,14 @@ public class GameManager : MonoBehaviour
 
     void Awake() {
         Time.timeScale = 0f;
+        playerInEnding = false;
         playerInMenu = true;
         playerIsDead = false;
         playerInDialogue = false;
         hasDroppedItem = false;
         playerReviveEvent.RemoveAllListeners();
+
+        GameObject.Find("Canvas/CreditsMenu/GameVersion").GetComponent<TextMeshProUGUI>().text = Application.version.ToString();
 
         myGameManager = GetComponent<GameManager>();
 
@@ -71,6 +76,10 @@ public class GameManager : MonoBehaviour
         useMessage = GameObject.Find("Canvas/UseMessage");
         useMessage.SetActive(false);
         displayPlayerHealth = GameObject.Find("Canvas/PlayerHealth").GetComponent<DisplayPlayerHealth>();
+        labinnacHealth = GameObject.Find("Canvas/LabinnacHealth");
+        labinnacHealth.SetActive(false);
+        gameEnding = GameObject.Find("Canvas/Ending");
+        gameEnding.gameObject.SetActive(false);
         debugMessage = GameObject.Find("Canvas/DebugMessage").GetComponent<TextMeshProUGUI>();
         debugMessage.text = "";
 
@@ -86,13 +95,34 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
 
     }
+    public static void EndGame() {
+        foreach (Transform child in playerInv) {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in weaponMenu) {
+            Destroy(child.gameObject);
+        }
+
+        Time.timeScale = 0f;
+        playerInMenu = true;
+        playerInEnding = true;
+        displayPlayerHealth.gameObject.SetActive(false);
+        labinnacHealth.SetActive(false);
+        gameEnding.gameObject.SetActive(true);
+
+    }
+
+    public static void ShowLabinnacHealth() {
+        labinnacHealth.SetActive(true);
+    }
+
     public static void SwitchCameraToMain() {
         playerTrans.Find("LineToMouse").gameObject.SetActive(true);
         mainCamera.gameObject.SetActive(true);
         cameraCutscene2.gameObject.SetActive(false);
     }
     public static void ChangeCheckpoint(Transform newCheckpoint) {
-        SpawnLoudAudio(myGameManager.clip_newCheckpoint);
+        // SpawnLoudAudio(myGameManager.clip_newCheckpoint);
         myGameManager.playerCheckpoint = newCheckpoint;
         myGameManager.WriteMessage("You reached a new checkpoint!");
 
@@ -184,11 +214,11 @@ public class GameManager : MonoBehaviour
             Cursor.visible = false;
         }
 
-        if(playerIsDead == true && playerInMenu == false && Input.GetButtonDown("Revive")) {
+        if(playerInEnding == false && playerIsDead == true && playerInMenu == false && Input.GetButtonDown("Revive")) {
             RevivePlayer();
         }
 
-        if(Input.GetButtonDown("Pause")) {
+        if(playerInEnding == false && Input.GetButtonDown("Pause")) {
             PauseGame();
         }
     }
