@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     public static GameObject deathMessage;
     public static GameObject useMessage;
     public static DisplayPlayerHealth displayPlayerHealth;
+    public static TextMeshProUGUI debugMessage;
 
     private static Pool pool_LoudAudioSource;
     public static Pool pool_bulletsRevolver;
@@ -55,6 +57,8 @@ public class GameManager : MonoBehaviour
         useMessage = GameObject.Find("Canvas/UseMessage");
         useMessage.SetActive(false);
         displayPlayerHealth = GameObject.Find("Canvas/PlayerHealth").GetComponent<DisplayPlayerHealth>();
+        debugMessage = GameObject.Find("Canvas/DebugMessage").GetComponent<TextMeshProUGUI>();
+        debugMessage.text = "";
 
         pool_LoudAudioSource = transform.Find("pool_LoudAudioSource").GetComponent<Pool>();
         pool_bulletsRevolver = transform.Find("pool_BulletsRevolver").GetComponent<Pool>();
@@ -66,6 +70,7 @@ public class GameManager : MonoBehaviour
 
         //Cursor.lockState = CursorLockMode.None;
         Cursor.visible = false;
+
     }
     public static void ChangeCheckpoint(Transform newCheckpoint) {
         myGameManager.playerCheckpoint = newCheckpoint;
@@ -78,6 +83,16 @@ public class GameManager : MonoBehaviour
             Destroy(obj);
         }
     }
+    public void WriteMessage(string newMessage) {
+        debugMessage.text = newMessage;
+
+        StartCoroutine("DeleteMessage");
+    }
+    private IEnumerator DeleteMessage() {
+        yield return new WaitForSeconds(5f);
+        debugMessage.text = "";
+    }
+
     public void NewGame() {
         Time.timeScale = 1f;
         playerInMenu = false;
@@ -121,7 +136,10 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        Cursor.visible = false;
+        if(Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.W)) {
+            KillPlayer();
+        }
+
         if (Input.GetMouseButtonDown(0) && Cursor.visible) {
             Cursor.visible = false;
         }

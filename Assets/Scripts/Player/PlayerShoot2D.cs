@@ -95,6 +95,11 @@ public class PlayerShoot2D : MonoBehaviour {
     }
     private void Update() {
         // sound for the tommy gun
+
+        if (GameManager.playerInMenu == true || GameManager.playerIsDead == true || GameManager.playerInDialogue == true) {
+            return;
+        }
+
         if (myWeapon == Weapon.machinegun) {
             if (Input.GetButton("Shoot") && GetComponent<AudioSource>().isPlaying == false) {
                 GetComponent<AudioSource>().PlayWebGL();

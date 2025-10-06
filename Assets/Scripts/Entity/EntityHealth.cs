@@ -42,9 +42,10 @@ public class EntityHealth : MonoBehaviour {
         if (GetComponent<EntityMoveTo>()) {
             GetComponent<EntityMoveTo>()._hasSeenPlayer = true;
         }
-        if (GetComponent<ShootAtPlayer>()) {
-            GetComponent<ShootAtPlayer>()._hasSeenPlayer = true;
-        }
+        // _hasSeenPlayer on shoot at player is a bit confusing. EntityMoveTo makes sense though.
+        //if (GetComponent<ShootAtPlayer>()) {
+        // GetComponent<ShootAtPlayer>()._hasSeenPlayer = true;
+        //}
 
         if (_currentHealth > 0) {
             if(clipHurt.Count > 0) {
