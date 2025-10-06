@@ -8,7 +8,7 @@ Full credits + Source code:
 https://github.com/AlexisDrain/LDJAM58-Collector  
 
 LDJAM page:
-https://ldjam.com/events/ludum-dare/58/$415702  
+https://ldjam.com/events/ludum-dare/58/99-shotguns  
 
 ------
 
