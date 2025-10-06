@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     public Transform playerCheckpoint;
 
+    public static GameManager myGameManager;
     public static Transform playerTrans;
     public static Transform playerInv;
     public static Rigidbody playerRigidbody;
@@ -39,6 +40,8 @@ public class GameManager : MonoBehaviour
         playerIsDead = false;
         playerInDialogue = false;
 
+        myGameManager = GetComponent<GameManager>();
+
         playerTrans = GameObject.Find("Player").transform;
         playerInv = playerTrans.Find("PlayerInv");
         playerRigidbody = playerTrans.GetComponent<Rigidbody>();
@@ -64,7 +67,9 @@ public class GameManager : MonoBehaviour
         //Cursor.lockState = CursorLockMode.None;
         Cursor.visible = false;
     }
-
+    public static void ChangeCheckpoint(Transform newCheckpoint) {
+        myGameManager.playerCheckpoint = newCheckpoint;
+    }
     public static void KillPlayer() {
         playerIsDead = true;
         deathMessage.SetActive(true);
@@ -73,13 +78,15 @@ public class GameManager : MonoBehaviour
             Destroy(obj);
         }
     }
-    public void StartGame() {
+    public void NewGame() {
         Time.timeScale = 1f;
         playerInMenu = false;
         playerIsDead = false;
         mainMenu.SetActive(false);
         creditsMenu.SetActive(false);
         deathMessage.SetActive(false);
+
+        playerCheckpoint = GameObject.Find("checkpoint_silentPath").transform;
 
         playerTrans.GetComponent<Rigidbody>().position = playerCheckpoint.position;
         playerTrans.position = playerCheckpoint.position;
