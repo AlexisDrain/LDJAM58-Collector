@@ -39,6 +39,13 @@ public class EntityHealth : MonoBehaviour {
         healthBar.SetActive(true); // starts false
         healthBarBar.size = new Vector2(_currentHealth / defaultHealth * 3.6875f, healthBarBar.size.y);
 
+        if (GetComponent<EntityMoveTo>()) {
+            GetComponent<EntityMoveTo>()._hasSeenPlayer = true;
+        }
+        if (GetComponent<ShootAtPlayer>()) {
+            GetComponent<ShootAtPlayer>()._hasSeenPlayer = true;
+        }
+
         if (_currentHealth > 0) {
             if(clipHurt.Count > 0) {
                 GetComponent<AudioSource>().clip = clipHurt[Random.Range(0, clipHurt.Count)];

@@ -106,7 +106,7 @@ public class PlayerShoot2D : MonoBehaviour {
             nextShotCountdown -= Time.deltaTime;
         }
 
-        if (GameManager.playerInMenu == true || GameManager.playerIsDead == true) {
+        if (GameManager.playerInMenu == true || GameManager.playerIsDead == true || GameManager.playerInDialogue == true) {
             return;
         }
 

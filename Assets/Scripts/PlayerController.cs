@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update() {
 
-        if (GameManager.playerInMenu == true || GameManager.playerIsDead == true) {
+        if (GameManager.playerInMenu == true || GameManager.playerIsDead == true || GameManager.playerInDialogue == true) {
             return;
         }
 
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate() {
 
-        if (GameManager.playerInMenu == true || GameManager.playerIsDead == true) {
+        if (GameManager.playerInMenu == true || GameManager.playerIsDead == true || GameManager.playerInDialogue == true) {
             myRigidbody.velocity = Vector3.zero;
             return;
         }

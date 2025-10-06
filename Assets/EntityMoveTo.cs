@@ -9,6 +9,7 @@ public class EntityMoveTo : MonoBehaviour
     public bool targetIsPlayer = true;
     public Transform target;
     public float sightRange = 10f;
+    public bool _hasSeenPlayer = false;
 
     public bool flipGraphicOnLeft = true;
     public SpriteRenderer mySpriteRenderer;
@@ -20,7 +21,9 @@ public class EntityMoveTo : MonoBehaviour
             target = GameManager.playerTrans;
         }
     }
-
+    private void OnEnable() {
+        _hasSeenPlayer = false;
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -35,6 +38,9 @@ public class EntityMoveTo : MonoBehaviour
         }
 
         if (Vector3.Distance(transform.position, target.position) <= sightRange) {
+            _hasSeenPlayer = true;
+        }
+        if(_hasSeenPlayer) {
             Vector3 direction = (target.position - transform.position).normalized;
             myRigidbody.AddForce(direction * speed);
         }

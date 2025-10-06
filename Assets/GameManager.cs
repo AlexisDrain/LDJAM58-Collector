@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static bool playerInMenu = true;
     public static bool playerIsDead = false;
+    public static bool playerInDialogue = false;
     public static bool hasDroppedItem = false; // used with dropItemEveryOtherEnemy
 
     public Transform playerCheckpoint;
@@ -17,8 +18,9 @@ public class GameManager : MonoBehaviour
     public static GameObject mainMenu;
     public static GameObject creditsMenu;
     public static Transform weaponMenu;
-    public static GameObject dialogue;
+    public static DialogueManager dialogueManager;
     public static GameObject deathMessage;
+    public static GameObject useMessage;
     public static DisplayPlayerHealth displayPlayerHealth;
 
     private static Pool pool_LoudAudioSource;
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         playerInMenu = true;
         playerIsDead = false;
+        playerInDialogue = false;
 
         playerTrans = GameObject.Find("Player").transform;
         playerInv = playerTrans.Find("PlayerInv");
@@ -43,10 +46,11 @@ public class GameManager : MonoBehaviour
         creditsMenu = GameObject.Find("CreditsMenu").gameObject;
         creditsMenu.SetActive(false);
         weaponMenu = GameObject.Find("Canvas/WeaponMenu").transform;
-        dialogue = GameObject.Find("Canvas/Dialogue");
-        dialogue.SetActive(false);
+        dialogueManager = GameObject.Find("Canvas/Dialogue").GetComponent<DialogueManager>();
         deathMessage = GameObject.Find("Canvas/DeathMessage");
         deathMessage.SetActive(false);
+        useMessage = GameObject.Find("Canvas/UseMessage");
+        useMessage.SetActive(false);
         displayPlayerHealth = GameObject.Find("Canvas/PlayerHealth").GetComponent<DisplayPlayerHealth>();
 
         pool_LoudAudioSource = transform.Find("pool_LoudAudioSource").GetComponent<Pool>();

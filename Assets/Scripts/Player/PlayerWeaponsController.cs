@@ -59,7 +59,7 @@ public class PlayerWeaponsController : MonoBehaviour
     void FixedUpdate() {
         Vector3 mousePosition = GameManager.GetMousePositionOnFloor();
 
-        if (GameManager.playerInMenu == true || GameManager.playerIsDead == true) {
+        if (GameManager.playerInMenu == true || GameManager.playerIsDead == true || GameManager.playerInDialogue == true) {
             return;
         }
 

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEngine.GraphicsBuffer;
 
 public enum EnemyWeapon {
     eyeball,
@@ -18,9 +17,11 @@ public class ShootAtPlayer : MonoBehaviour {
     public float defaultShootRandom = 1f;
     private float currentShootCountdown = 1f;
     public float sightRange = 30f;
+    public bool _hasSeenPlayer = false;
 
     void OnEnable()
     {
+        _hasSeenPlayer = false;
         currentShootCountdown = defaultShootCountdown + Random.Range(0f, defaultShootRandom);
     }
 
@@ -34,6 +35,9 @@ public class ShootAtPlayer : MonoBehaviour {
             currentShootCountdown = defaultShootCountdown + Random.Range(0f, defaultShootRandom);
 
             if (Vector3.Distance(transform.position, GameManager.playerTrans.position) <= sightRange) {
+                _hasSeenPlayer = true;
+            }
+            if(_hasSeenPlayer) {
                 StartCoroutine("SpawnBullet");
             }
             /*
