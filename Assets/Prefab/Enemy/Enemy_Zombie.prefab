@@ -636,7 +636,7 @@ MonoBehaviour:
   myAnimator: {fileID: 7768892417773376599}
   defaultShootCountdown: 2
   defaultShootRandom: 1
-  sightRange: 12
+  sightRange: 22
 --- !u!82 &6531855173830536973
 AudioSource:
   m_ObjectHideFlags: 0
