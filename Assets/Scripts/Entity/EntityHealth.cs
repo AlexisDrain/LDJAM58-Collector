@@ -46,8 +46,8 @@ public class EntityHealth : MonoBehaviour {
         }
         _currentHealth = defaultHealth;
 
-        healthBar.SetActive(false); // starts false
         healthBarBar.size = new Vector2(_currentHealth / defaultHealth * 3.6875f, healthBarBar.size.y);
+        healthBar.SetActive(false); // starts false
 
         transform.position = resetPosition;
         if(GetComponent<Rigidbody>()) {

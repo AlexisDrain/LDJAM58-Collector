@@ -109,6 +109,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7db199e5cdd7f854da2ecca4622c9e95, type: 3}
   dropItem: {fileID: 8918015059413887391, guid: d39cff0dd0e3f944e816e57465ef6e8d, type: 3}
   _currentHealth: 3
+  spawnedByWave: 0
 --- !u!114 &2661183779200938699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +277,7 @@ GameObject:
   - component: {fileID: 8287525546604780764}
   - component: {fileID: 1267435113539677874}
   - component: {fileID: 7378092163674794178}
+  - component: {fileID: 1180072089687408393}
   m_Layer: 6
   m_Name: Graphic
   m_TagString: Untagged
@@ -371,6 +373,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1180072089687408393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4539609031387130846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89edc94395fc4cd439a95cbb5c0387be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetIsPlayer: 1
+  targetTransform: {fileID: 0}
+  graphicalObject: {fileID: 8287525546604780764}
 --- !u!1 &5533255777796614416
 GameObject:
   m_ObjectHideFlags: 0

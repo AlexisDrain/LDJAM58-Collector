@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
         playerInMenu = true;
         playerIsDead = false;
         playerInDialogue = false;
+        hasDroppedItem = false;
+        playerReviveEvent.RemoveAllListeners();
 
         myGameManager = GetComponent<GameManager>();
 
@@ -97,6 +99,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         playerInMenu = false;
         playerIsDead = false;
+        playerInDialogue = false;
+        hasDroppedItem = false;
+
         mainMenu.SetActive(false);
         creditsMenu.SetActive(false);
         deathMessage.SetActive(false);
