@@ -13,8 +13,8 @@ Blast hordes of monsters using an unlimited amount of guns!
 Full credits + Source code:  
 https://github.com/AlexisDrain/LDJAM58-Collector  
 
-LDJAM page:
-https://ldjam.com/events/ludum-dare/58/$415702  
+LDJAM page:  
+https://ldjam.com/events/ludum-dare/58/99-shotguns  
 
 ------
 
@@ -36,16 +36,16 @@ Full credits + Source code:
 https://github.com/AlexisDrain/LDJAM58-Collector  
 
 
-=== Credits ===
-A game by Alexis Clay
-https://alexclay.itch.io/
+=== Credits ===  
+A game by Alexis Clay  
+https://alexclay.itch.io/  
+  
+No generative AI was used in the creation of this game.  
 
-No generative AI was used in the creation of this game.
 
-
-=== Music ===
+=== Music ===  
 - Spark by Johan Vandegriff. Free Music Archive (CC BY):  
-https://freemusicarchive.org/music/johan-vandegriff/0x07e7
+https://freemusicarchive.org/music/johan-vandegriff/0x07e7  
 
 - NCRS 03 DESCENDING AIR CURRENT FULL Loop  
 https://wowsound.com/our-music/tracks/ncrs-03-descending-air-current-full-loop.aspx  
