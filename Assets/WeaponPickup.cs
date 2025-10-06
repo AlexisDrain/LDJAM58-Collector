@@ -8,9 +8,20 @@ public class WeaponPickup : MonoBehaviour {
     public GameObject weaponPrefab;
     public GameObject weaponUIPrefab;
     public AudioClip pickupAudio;
+    public bool droppedByEnemy = false;
     void Start()
     {
-        
+
+        GameManager.playerReviveEvent.AddListener(ResetPickup);
+    }
+
+    private void ResetPickup() {
+
+        if(droppedByEnemy == false) {
+            gameObject.SetActive(true);
+        } else {
+            Destroy(gameObject);
+        }
     }
 
     public void Pickup()
@@ -28,6 +39,6 @@ public class WeaponPickup : MonoBehaviour {
         newGun.GetComponent<PlayerShoot2D>().weaponUIAmmoCount.text = defaultAmmo.ToString();
 
         GameManager.SpawnLoudAudio(pickupAudio, new Vector2(0.9f, 1.2f));
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

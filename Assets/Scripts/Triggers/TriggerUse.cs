@@ -9,10 +9,9 @@ public class TriggerUse : MonoBehaviour
     public UnityEvent onTriggerUse;
     public UnityEvent onTriggerReset;
     private bool playerInUseRange = false;
-    public bool canBeReTriggered = false;
-    public bool onEnableResetHasBeenTriggered = true;
+    // public bool canBeReTriggered = false;
+    // public bool onEnableResetHasBeenTriggered = true;
 
-    private bool hasBeenTriggered = false;
     /*
     void Start() {
         ResetTrigger();

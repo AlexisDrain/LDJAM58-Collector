@@ -79,8 +79,8 @@ public class GameManager : MonoBehaviour
         playerIsDead = true;
         deathMessage.SetActive(true);
 
-        foreach(GameObject obj in playerInv) {
-            Destroy(obj);
+        foreach(Transform child in playerInv) {
+            Destroy(child.gameObject);
         }
     }
     public void WriteMessage(string newMessage) {
@@ -106,6 +106,9 @@ public class GameManager : MonoBehaviour
         playerTrans.GetComponent<Rigidbody>().position = playerCheckpoint.position;
         playerTrans.position = playerCheckpoint.position;
         playerTrans.GetComponent<PlayerHealth>().ResetHealth();
+
+        particles_BloodDamage.Clear();
+        particles_BloodKill.Clear();
     }
     public void RevivePlayer() {
         playerIsDead = false;
@@ -116,11 +119,18 @@ public class GameManager : MonoBehaviour
         playerTrans.GetComponent<Rigidbody>().position = playerCheckpoint.position;
         playerTrans.position = playerCheckpoint.position;
         playerTrans.GetComponent<PlayerHealth>().ResetHealth();
-        playerReviveEvent.Invoke();
 
-        foreach (GameObject obj in playerInv) {
-            Destroy(obj);
+        particles_BloodDamage.Clear();
+        particles_BloodKill.Clear();
+
+        foreach (Transform child in playerInv) {
+            Destroy(child.gameObject);
         }
+        foreach (Transform child in weaponMenu) {
+            Destroy(child.gameObject);
+        }
+
+        playerReviveEvent.Invoke();
     }
     public void ResumeGame() {
         Time.timeScale = 1f;

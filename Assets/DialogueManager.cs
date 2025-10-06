@@ -25,6 +25,7 @@ public class DialogueManager : MonoBehaviour
         textMeshProUGUI.text = dialogueList[newIndex];
         canSkipDialogue = 0.5f;
 
+        // dialogue scripting goes here. If we need an event to happen BEFORE the player presses the dialogue close button.
         if (newIndex == 0) {
             GameManager.SpawnLoudAudio(clipList[0]);
             nextDialogueBox = 1;
@@ -47,7 +48,10 @@ public class DialogueManager : MonoBehaviour
         }
 
         if(GameManager.playerInDialogue && canSkipDialogue <= 0f && Input.GetButtonDown("ProgressDialogue")) {
-            if(nextDialogueBox != -1) {
+
+            // dialogue scripting goes here. If we need an event to happen AFTER the player presses the dialogue close button.
+
+            if (nextDialogueBox != -1) {
                 ShowDialogue(nextDialogueBox);
             } else {
                 GameManager.playerInDialogue = false;

@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187a8b94137902c41a6de0e40daba15c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultAmmo: 30
+  defaultAmmo: 60
   weaponPrefab: {fileID: 1348599323325706924, guid: f0a8745d007f2854f8d82dff2a28cbe5, type: 3}
   weaponUIPrefab: {fileID: 3606476725136480216, guid: f2b8c8c5093b7f747b44718f654767fe, type: 3}
   pickupAudio: {fileID: 8300000, guid: 4d20d6aecd5562e47a468c1c3c417b2c, type: 3}

@@ -98,11 +98,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9394a896e1b57244b2b67c60ecbab22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropItemEveryOtherEnemy: 1
   defaultHealth: 100
   healthBar: {fileID: 1986520307289467874}
   healthBarBar: {fileID: 9000227947283186739}
-  clipDeath: []
   clipHurt: []
+  clipDeath:
+  - {fileID: 8300000, guid: 1028e0b9e25852f49b0bc78e5e237498, type: 3}
+  - {fileID: 8300000, guid: 4907e1d83f6c66842bb5fe18312d4e6d, type: 3}
+  - {fileID: 8300000, guid: 7db199e5cdd7f854da2ecca4622c9e95, type: 3}
   dropItem: {fileID: 8918015059413887391, guid: d39cff0dd0e3f944e816e57465ef6e8d, type: 3}
   _currentHealth: 3
 --- !u!114 &2661183779200938699
@@ -140,6 +144,7 @@ MonoBehaviour:
   targetIsPlayer: 1
   target: {fileID: 0}
   sightRange: 7
+  _hasSeenPlayer: 0
   flipGraphicOnLeft: 1
   mySpriteRenderer: {fileID: 1267435113539677874}
 --- !u!1 &1986520307289467874

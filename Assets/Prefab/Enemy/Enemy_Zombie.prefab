@@ -596,8 +596,11 @@ MonoBehaviour:
   defaultHealth: 100
   healthBar: {fileID: 4595056335952115174}
   healthBarBar: {fileID: 1647674874336503579}
-  clipDeath: []
   clipHurt: []
+  clipDeath:
+  - {fileID: 8300000, guid: 1028e0b9e25852f49b0bc78e5e237498, type: 3}
+  - {fileID: 8300000, guid: 4907e1d83f6c66842bb5fe18312d4e6d, type: 3}
+  - {fileID: 8300000, guid: 7db199e5cdd7f854da2ecca4622c9e95, type: 3}
   dropItem: {fileID: 8918015059413887391, guid: 981b6f986969a2840a75b2904120b151, type: 3}
   _currentHealth: 3
 --- !u!114 &1174675755375911718
@@ -637,6 +640,7 @@ MonoBehaviour:
   defaultShootCountdown: 2
   defaultShootRandom: 1
   sightRange: 22
+  _hasSeenPlayer: 0
 --- !u!82 &6531855173830536973
 AudioSource:
   m_ObjectHideFlags: 0

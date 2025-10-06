@@ -7,8 +7,8 @@ public class EntityHealth : MonoBehaviour {
     public float defaultHealth = 100;
     public GameObject healthBar;
     public SpriteRenderer healthBarBar;
-    public List<AudioClip> clipDeath;
     public List<AudioClip> clipHurt;
+    public List<AudioClip> clipDeath;
     public GameObject dropItem;
 
     private Vector3 resetPosition;
@@ -18,6 +18,7 @@ public class EntityHealth : MonoBehaviour {
     // private Vector2 originCamCoords;
     [Header("read only")]
     public float _currentHealth = 100;
+    public bool spawnedByWave = false;
 
     void Awake()
     {
@@ -38,7 +39,16 @@ public class EntityHealth : MonoBehaviour {
         */
     }
     private void ResetEnemy() {
+
+        if (spawnedByWave == true) {
+            Destroy(gameObject);  // when player is revived, this enemy which was spawned by Labinnac waves will destroy self
+            return;
+        }
         _currentHealth = defaultHealth;
+
+        healthBar.SetActive(false); // starts false
+        healthBarBar.size = new Vector2(_currentHealth / defaultHealth * 3.6875f, healthBarBar.size.y);
+
         transform.position = resetPosition;
         if(GetComponent<Rigidbody>()) {
             GetComponent<Rigidbody>().position = resetPosition;
@@ -81,11 +91,16 @@ public class EntityHealth : MonoBehaviour {
             GameManager.particles_BloodKill.transform.position = transform.position;
             GameManager.particles_BloodKill.Play();
 
+            if (clipDeath.Count > 0) {
+                GameManager.SpawnLoudAudio(clipDeath[Random.Range(0, clipDeath.Count)]);
+            }
+
             // item drop
             if (dropItem) {
                 if(dropItemEveryOtherEnemy == true) {
                     if(GameManager.hasDroppedItem == false) {
                         GameObject loot = GameObject.Instantiate(dropItem);
+                        loot.GetComponent<WeaponPickup>().droppedByEnemy = true; // when player is revived, this dropped item will destroy self
                         loot.transform.position = transform.position;
                         GameManager.hasDroppedItem = true;
                     } else if (GameManager.hasDroppedItem == true) {
@@ -93,6 +108,7 @@ public class EntityHealth : MonoBehaviour {
                     }
                 } else if (dropItemEveryOtherEnemy == false) {
                     GameObject loot = GameObject.Instantiate(dropItem);
+                    loot.GetComponent<WeaponPickup>().droppedByEnemy = true;
                     loot.transform.position = transform.position;
                 }
 
