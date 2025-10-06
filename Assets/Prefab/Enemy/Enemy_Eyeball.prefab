@@ -362,6 +362,7 @@ MonoBehaviour:
   clipDeath: []
   dropItem: {fileID: 8918015059413887391, guid: 6aa2507562ac26d4684a576b0a94444e, type: 3}
   _currentHealth: 3
+  spawnedByWave: 0
 --- !u!114 &5173504249524291634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,7 +399,7 @@ MonoBehaviour:
   myAnimator: {fileID: 3395611751093124368}
   defaultShootCountdown: 4
   defaultShootRandom: 1
-  sightRange: 30
+  sightRange: 10
   _hasSeenPlayer: 0
 --- !u!82 &1505855995107929824
 AudioSource:

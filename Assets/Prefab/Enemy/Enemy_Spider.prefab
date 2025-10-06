@@ -528,9 +528,9 @@ GameObject:
   - component: {fileID: 251866393100888365}
   - component: {fileID: 625559883645871225}
   - component: {fileID: 3422902768968935794}
+  - component: {fileID: 3229248800795836072}
   - component: {fileID: 2753591532776735227}
   - component: {fileID: 4916387110312044107}
-  - component: {fileID: 3229248800795836072}
   m_Layer: 6
   m_Name: Enemy_Spider
   m_TagString: Untagged
@@ -645,6 +645,26 @@ MonoBehaviour:
   destroyOnTouchAnything: 0
   destroySelfOnInvoke: 0
   damageValue: 20
+--- !u!114 &3229248800795836072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6243465307114464826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55e404dcf4ad6749ab9c3234178bcab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  maxVelocity: 4
+  targetIsPlayer: 1
+  target: {fileID: 0}
+  sightRange: 30
+  _hasSeenPlayer: 0
+  flipGraphicOnLeft: 0
+  mySpriteRenderer: {fileID: 0}
 --- !u!114 &2753591532776735227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,7 +683,7 @@ MonoBehaviour:
   myAnimator: {fileID: 5550267409034613216}
   defaultShootCountdown: 1.5
   defaultShootRandom: 1
-  sightRange: 30
+  sightRange: 10
   _hasSeenPlayer: 0
 --- !u!82 &4916387110312044107
 AudioSource:
@@ -761,23 +781,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3229248800795836072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6243465307114464826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c55e404dcf4ad6749ab9c3234178bcab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 20
-  maxVelocity: 4
-  targetIsPlayer: 1
-  target: {fileID: 0}
-  sightRange: 30
-  _hasSeenPlayer: 0
-  flipGraphicOnLeft: 0
-  mySpriteRenderer: {fileID: 0}

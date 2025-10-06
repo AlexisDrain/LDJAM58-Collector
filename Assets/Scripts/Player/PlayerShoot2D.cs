@@ -93,8 +93,12 @@ public class PlayerShoot2D : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+    // sound for the tommy gun
     private void Update() {
-        // sound for the tommy gun
+        if (nextShotCountdown > 0.0f) {
+            nextShotCountdown -= Time.deltaTime;
+        }
 
         if (GameManager.playerInMenu == true || GameManager.playerIsDead == true || GameManager.playerInDialogue == true) {
             return;
