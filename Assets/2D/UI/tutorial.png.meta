@@ -286,7 +286,7 @@ TextureImporter:
         width: 232
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -294,6 +294,27 @@ TextureImporter:
       bones: []
       spriteID: a16bf3e37ca254449b131736d217f400
       internalID: 638861221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tutorial_9
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 109
+        width: 62
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 364e80dabe4d4a34fb8658ed17f1a956
+      internalID: -1629315818
       vertices: []
       indices: 
       edges: []
@@ -318,6 +339,7 @@ TextureImporter:
       tutorial_6: -1288649230
       tutorial_7: -1878731125
       tutorial_8: 638861221
+      tutorial_9: -1629315818
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

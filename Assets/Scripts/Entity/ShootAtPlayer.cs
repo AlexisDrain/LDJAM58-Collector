@@ -36,10 +36,12 @@ public class ShootAtPlayer : MonoBehaviour {
             currentShootCountdown = defaultShootCountdown + Random.Range(0f, defaultShootRandom);
 
             if (Vector3.Distance(transform.position, GameManager.playerTrans.position) <= sightRange) {
-                _hasSeenPlayer = true;
+                _hasSeenPlayer = true; // unused // the enemies keep shooting at the player even when you are faaaaar
+                StartCoroutine("SpawnBullet");
             }
             if(_hasSeenPlayer) {
-                StartCoroutine("SpawnBullet");
+                // unused // the enemies keep shooting at the player even when you are faaaaar
+                // StartCoroutine("SpawnBullet");
             }
             /*
             RaycastHit hit;

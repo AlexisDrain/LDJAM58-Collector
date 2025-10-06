@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public AudioClip cutsceneExplosionSound;
     public static bool playerInEnding = false;
     public static bool playerInMenu = true;
     public static bool playerIsDead = false;
@@ -29,7 +30,9 @@ public class GameManager : MonoBehaviour
     public static GameObject deathMessage;
     public static GameObject useMessage;
     public static DisplayPlayerHealth displayPlayerHealth;
+    public static GameObject tutorialMove;
     public static GameObject labinnacHealth;
+    public static GameObject whiteFlash;
     public static GameObject gameEnding;
     public static TextMeshProUGUI debugMessage;
 
@@ -59,8 +62,8 @@ public class GameManager : MonoBehaviour
         mainCamera = GameObject.Find("MainCamera").GetComponent<Camera>();
         mainCamera.gameObject.SetActive(false);
         cameraCutscene1 = GameObject.Find("CameraCutscene1");
-        cameraCutscene1.gameObject.SetActive(false);
         cameraCutscene2 = GameObject.Find("CameraCutscene2");
+        cameraCutscene2.gameObject.SetActive(false);
         // cameraCutscene2.gameObject.SetActive(false);
         playerTrans = GameObject.Find("Player").transform;
         playerTrans.Find("LineToMouse").gameObject.SetActive(false);
@@ -76,8 +79,11 @@ public class GameManager : MonoBehaviour
         useMessage = GameObject.Find("Canvas/UseMessage");
         useMessage.SetActive(false);
         displayPlayerHealth = GameObject.Find("Canvas/PlayerHealth").GetComponent<DisplayPlayerHealth>();
+        tutorialMove = GameObject.Find("TutorialMove");
+        tutorialMove.SetActive(false);
         labinnacHealth = GameObject.Find("Canvas/LabinnacHealth");
         labinnacHealth.SetActive(false);
+        whiteFlash = GameObject.Find("Canvas/WhiteFlash");
         gameEnding = GameObject.Find("Canvas/Ending");
         gameEnding.gameObject.SetActive(false);
         debugMessage = GameObject.Find("Canvas/DebugMessage").GetComponent<TextMeshProUGUI>();
@@ -112,11 +118,44 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void NewGame() {
+        Time.timeScale = 1f;
+        playerInMenu = false;
+        playerIsDead = false;
+        playerInDialogue = false;
+        hasDroppedItem = false;
+
+        mainMenu.SetActive(false);
+        creditsMenu.SetActive(false);
+        deathMessage.SetActive(false);
+
+        playerCheckpoint = GameObject.Find("StartGameCheckpoint").transform;
+
+        playerTrans.GetComponent<Rigidbody>().position = playerCheckpoint.position;
+        playerTrans.position = playerCheckpoint.position;
+        playerTrans.GetComponent<PlayerHealth>().ResetHealth();
+
+        particles_BloodDamage.Clear();
+        particles_BloodKill.Clear();
+
+        dialogueManager.ShowDialogue(2);
+
+        displayPlayerHealth.gameObject.SetActive(false);
+    }
     public static void ShowLabinnacHealth() {
         labinnacHealth.SetActive(true);
     }
 
+    public static void SwitchToCamera1() {
+        //mainCamera.gameObject.SetActive(true);
+        displayPlayerHealth.gameObject.SetActive(true);
+        whiteFlash.GetComponent<Animator>().SetTrigger("Flash");
+        SpawnLoudAudio(myGameManager.cutsceneExplosionSound);
+        cameraCutscene1.gameObject.SetActive(false);
+        cameraCutscene2.gameObject.SetActive(true);
+    }
     public static void SwitchCameraToMain() {
+        whiteFlash.gameObject.SetActive(false);
         playerTrans.Find("LineToMouse").gameObject.SetActive(true);
         mainCamera.gameObject.SetActive(true);
         cameraCutscene2.gameObject.SetActive(false);
@@ -146,26 +185,6 @@ public class GameManager : MonoBehaviour
         debugMessage.text = "";
     }
 
-    public void NewGame() {
-        Time.timeScale = 1f;
-        playerInMenu = false;
-        playerIsDead = false;
-        playerInDialogue = false;
-        hasDroppedItem = false;
-
-        mainMenu.SetActive(false);
-        creditsMenu.SetActive(false);
-        deathMessage.SetActive(false);
-
-        playerCheckpoint = GameObject.Find("StartGameCheckpoint").transform;
-
-        playerTrans.GetComponent<Rigidbody>().position = playerCheckpoint.position;
-        playerTrans.position = playerCheckpoint.position;
-        playerTrans.GetComponent<PlayerHealth>().ResetHealth();
-
-        particles_BloodDamage.Clear();
-        particles_BloodKill.Clear();
-    }
     public void RevivePlayer() {
         playerInMenu = false;
         playerIsDead = false;
@@ -218,7 +237,7 @@ public class GameManager : MonoBehaviour
             RevivePlayer();
         }
 
-        if(playerInEnding == false && Input.GetButtonDown("Pause")) {
+        if(playerInDialogue == false && playerInEnding == false && Input.GetButtonDown("Pause")) {
             PauseGame();
         }
     }

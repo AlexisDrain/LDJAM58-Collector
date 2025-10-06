@@ -361,6 +361,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7db199e5cdd7f854da2ecca4622c9e95, type: 3}
   clipDeath: []
   dropItem: {fileID: 8918015059413887391, guid: 6aa2507562ac26d4684a576b0a94444e, type: 3}
+  onDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  labinnacHealthbar: {fileID: 0}
   _currentHealth: 3
   spawnedByWave: 0
 --- !u!114 &5173504249524291634
@@ -397,9 +401,9 @@ MonoBehaviour:
   clip_charge: {fileID: 8300000, guid: 763bc21b86667da47a5ac832b7bd5a85, type: 3}
   clip_shoot: {fileID: 8300000, guid: d896740e122b0054e91ef97ce26a45a9, type: 3}
   myAnimator: {fileID: 3395611751093124368}
-  defaultShootCountdown: 4
+  defaultShootCountdown: 2.5
   defaultShootRandom: 1
-  sightRange: 10
+  sightRange: 20
   _hasSeenPlayer: 0
 --- !u!82 &1505855995107929824
 AudioSource:
