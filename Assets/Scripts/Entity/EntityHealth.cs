@@ -10,6 +10,8 @@ public class EntityHealth : MonoBehaviour {
     public List<AudioClip> clipDeath;
     public List<AudioClip> clipHurt;
     public GameObject dropItem;
+
+    private Vector3 resetPosition;
     // public bool doNotCountKill = false;
 
     // private Vector3 originPosition;
@@ -19,9 +21,11 @@ public class EntityHealth : MonoBehaviour {
 
     void Awake()
     {
-
+        resetPosition = transform.position;
         _currentHealth = defaultHealth;
         healthBar.SetActive(false);
+
+        GameManager.playerReviveEvent.AddListener(ResetEnemy);
         /*
         // save entity map coords
         originCamCoords = new Vector2(transform.position.x / GameManager.cameraBounds.x,
@@ -33,6 +37,23 @@ public class EntityHealth : MonoBehaviour {
         GameManager.playerChangeRoomEvent.AddListener(EnableIfInCameraCoords);
         */
     }
+    private void ResetEnemy() {
+        _currentHealth = defaultHealth;
+        transform.position = resetPosition;
+        if(GetComponent<Rigidbody>()) {
+            GetComponent<Rigidbody>().position = resetPosition;
+        }
+
+        if (GetComponent<EntityMoveTo>()) {
+            GetComponent<EntityMoveTo>()._hasSeenPlayer = false;
+        }
+        if (GetComponent<ShootAtPlayer>()) {
+            GetComponent<ShootAtPlayer>()._hasSeenPlayer = false;
+        }
+
+        gameObject.SetActive(true);
+    }
+
     public void AddDamage(int damage=1) {
         _currentHealth -= damage;
 
