@@ -97,6 +97,8 @@ public class GameManager : MonoBehaviour
         particles_BloodKill = transform.Find("Particles_BloodKill").GetComponent<ParticleSystem>();
         particles_BloodDamage = transform.Find("Particles_BloodDamage").GetComponent<ParticleSystem>();
 
+        // doesn't work on WebGL
+        //Cursor.SetCursor(newCrosshair, new Vector2(32f, 32f), CursorMode.ForceSoftware);
         //Cursor.lockState = CursorLockMode.None;
         Cursor.visible = false;
 
@@ -223,15 +225,20 @@ public class GameManager : MonoBehaviour
         mainMenu.SetActive(true);
         creditsMenu.SetActive(false);
     }
+    private void LateUpdate() {
+        // changed location because of Chrome bug
+        // this is needed, because the cursor turns visibile when the player presses esc
+
+        if (Input.GetMouseButtonDown(0) && Cursor.visible == true) {
+            Cursor.visible = false;
+        }
+    }
     void Update()
     {
         if(Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.W)) {
             KillPlayer();
         }
 
-        if (Input.GetMouseButtonDown(0) && Cursor.visible) {
-            Cursor.visible = false;
-        }
 
         if(playerInEnding == false && playerIsDead == true && playerInMenu == false && Input.GetButtonDown("Revive")) {
             RevivePlayer();
